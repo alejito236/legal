@@ -1,0 +1,712 @@
+  /**
+     * Acccion para ver o quitar anulacion de ventas
+     */
+
+    public function editarArticulosAction(){
+
+        if ($this->session->get("role") == 3) {
+
+          $post = $this->request->getPost();
+         
+            if(isset($post['id'])){ 
+                
+              $id = $post['id'];
+              //consulta para traer las camáñas
+              $campana = new mastercampana();
+              $campanaSql = $campana->getCampana();
+
+              foreach ($campanaSql as $campana) {
+                 $campanas[] = [
+                     "id"             => $campana['id_campana'],
+                     "campana"         => $campana['nombre'],
+                 ];
+              }
+
+              $campanas = json_encode($campanas);
+              $this->view->campanas = json_decode($campanas);
+
+              //consulta para traer los roles
+              $rol = new masterrol();
+              $rolSql = $rol->getRol();
+
+              foreach ($rolSql as $rol) {
+                 $roles[] = [
+                     "id"             => $rol['idmasterrol'],
+                     "rol"            => $rol['nombre'],
+                 ];
+              }
+
+              $roles = json_encode($roles);
+              $this->view->roles = json_decode($roles);
+
+              //consulta para traer las marcas
+              $marca = new mastermarca();
+              $marcaSql = $marca->getMarca();
+
+              foreach ($marcaSql as $marca) {
+                $marcas[] = [
+                    "id"            => $marca['id_marca'],
+                    "marca"         => $marca['nombre'],
+                ];
+              }
+
+              $marcas = json_encode($marcas);
+              $this->view->marcas = json_decode($marcas);
+
+              
+
+              $post = $this->request->getPost(); 
+
+              if(isset($post['rol2'])){
+
+                 $data = $post['rol2'];
+
+                 $barrio = new masterprogramas();
+                 $barrioSql = $barrio->getProgramas($data);
+
+                 $barrios =  array();
+
+                 foreach ($barrioSql as $barrio) {
+                     $barrios[] = [
+                         "id"       => $barrio['id_programas'],
+                         "programa"   => $barrio['nombre']
+
+                     ];
+                 }
+                 $barrios = json_encode($barrios);
+                 print_r($barrios);die;
+
+              }
+
+              if(isset($post['campana2'])){
+
+                  $data = $post['campana2'];
+   
+                  $campana = new masterrol();
+                  $campanaSql = $campana->getCampana_rol($data);
+   
+                  $campanas =  array();
+   
+                  foreach ($campanaSql as $campana) {
+                      $campanas[] = [
+                          "id"       => $campana['idmasterrol'],
+                          "rol"   => $campana['nombre']
+   
+                      ];
+                  }
+                  $campanas = json_encode($campanas);
+                  print_r($campanas);die;
+   
+               }
+
+               //consulta para traer las marcas
+              $procesador = new masterprocesador();
+              $procesadorSql = $procesador->getProcesador();
+
+              foreach ($procesadorSql as $procesador) {
+                $procesadores[] = [
+                    "id"            => $procesador['id_procesador'],
+                    "procesadorN"         => $procesador['procesador'],
+                    "serialProceador"         => $procesador['serial'],
+                    "generacionProcesador"         => $procesador['generacion'],
+                ];
+              }
+
+               //consulta para traer las marcas
+              $ram = new masterram();
+              $ramSql = $ram->getRam();
+
+              foreach ($ramSql as $ram) {
+                $rams[] = [
+                    "id"            => $ram['id_ram'],
+                    "Tram"         => $ram['capacidad_total'],
+                ];
+              }
+
+              $rams = json_encode($rams);
+              $this->view->rams = json_decode($rams);
+
+              // consulta para buscar cedula con la ciudad enviada
+              $inventario = new masterarticulo();
+              $inventarioSql = $inventario->getArticulosEdit($id);
+              $data = array();
+
+              foreach ($inventarioSql as $inventario) {
+
+                  $ram = '';
+
+                  if(isset($inventario['capacidad_total'])){
+                    $ram = $inventario['capacidad_total'];
+                  }
+
+                  $discoduro = '';
+
+                  if(isset($inventario['capacidad'])){
+                    $discoduro = $inventario['capacidad'];
+                  }
+
+                  $fuentepode = '';
+
+                  if(isset($inventario['tFUENTE'])){
+                    $fuentepoder = $inventario['tFUENTE'];
+                  }
+
+                  $unidadcd = '';
+
+                  if(isset($inventario['unidad_cd'])){
+                    $unidadcd = $inventario['unidad_cd'];
+                  }
+
+                  $tarjetav = '';
+
+                  if(isset($inventario['tarjeta_de_video'])){
+                    $tarjetav = $inventario['tarjeta_de_video'];
+                  }
+
+                  $tarjetar = '';
+
+                  if(isset($inventario['tarjeta_de_red'])){
+                    $tarjetar = $inventario['tarjeta_de_red'];
+                  }
+
+                  $mp = '';
+
+                  if(isset($inventario['procesador'])){
+                    $mp = $inventario['procesador'];
+                  }
+
+                  $sope = '';
+
+                  if(isset($inventario['sistema_operativo'])){
+                    $sope = $inventario['sistema_operativo'];
+                  }
+
+                  $serv = '';
+
+                  if(isset($inventario['servidores'])){
+                    $serv = $inventario['servidores'];
+                  }
+
+                  $data = [
+                     "id"                    => $inventario['id_articulo'],
+                     "dependencias"          => $inventario['dependencias'],
+                     "ciudad"                => $inventario['ciudad'],
+                     "tipoArticulo"          => $inventario['nombre'],
+                     "estadoE"               => $inventario['estado'],
+                     "sub_estado"            => $inventario['sub_estado'],
+                     "marca"                 => $inventario['marca'],
+                     "serial"                => $inventario['serialma'],
+
+                     "Tram"                  => $ram,
+                     "cantidadRam"           => $inventario['cantidad'],
+                     "serialRam1"            => $inventario['serial1'],
+                     "ramtarjeta1"           => $inventario['capacidad1'],
+                     "serialRam2"            => $inventario['serial2'],
+                     "ramtarjeta2"           => $inventario['capacidad2'],
+                     "serialRam3"            => $inventario['serial3'],
+                     "ramtarjeta3"           => $inventario['capacidad3'],
+                     "serialRam4"            => $inventario['serial4'],
+                     "ramtarjeta4"           => $inventario['capacidad4'],
+
+                     "discoDuro"             => $discoduro,
+                     "disco_duro"            => $inventario['disco_duro'],
+                     "serialDiscoduro"       => $inventario['serialdd'],
+
+                     "fuentePoder"           => $fuentepoder,
+                     "fuente_de_poder"       => $inventario['fuentepo'],
+                     "serialFuentePoder"     => $inventario['serialfp'],
+
+                     "unidadCd"              => $unidadcd,
+                     "unidad_cd"             => $inventario['unidcd'],
+                     "serialunidadCd"        => $inventario['serialcd'],
+
+                     "tarjetaVideo"          => $tarjetav,
+                     "tarjeta_de_video"      => $inventario['tvideo'],
+                     "serialtarjetaVideo"    => $inventario['serialtv'],
+
+                     "tipotarjetaRed"        => $tarjetar,
+                     "tarjeta_de_red"        => $inventario['idtr'],
+                     "serialtipotarjetaRed"  => $inventario['serialtr'],
+
+                     "procesadorN"           => $mp,
+                     "procesador"            => $inventario['idprocesador'],
+                     "serialProceador"       => $inventario['serialmp'],
+                     "generacionProcesador"  => $inventario['generacion'],
+
+                     "sistemaOp"             => $sope,
+                     "os"                    => $inventario['idos'],
+                     "versionSO"             => $inventario['versionos'],
+                     "razonSO"               => $inventario['observaciones'],
+
+                     "monitor"               => $inventario['monitor'],
+                     "actas"                 => $inventario['actas'],
+                     "ups"                   => $inventario['ups'],
+
+                     "servidores"            => $serv,
+                     "soServidor"            => $inventario['os'],
+                     "licenciaServior"       => $inventario['licenciado'],
+                     "arquitecturaServidor"  => $inventario['arquitectura'],
+                     "versionServidor"       => $inventario['versionms'],
+                     "tipoDisco"             => $inventario['tipoDisco'],
+                     "CapacidadD"            => $inventario['capacidadDisco'],
+                     "fuenteRedundante"      => $inventario['fuenteRedundante'],
+                     "cualFuenteR"           => $inventario['cualFuenteR'],
+                     "unidadOptica"          => $inventario['unidadOptica'],
+                     "cualUnidadO"           => $inventario['cualUnidadO'],
+
+
+
+                     "tituloActa"            => $inventario['tituloActa'],
+                     "descripcionActa"       => $inventario['descripcionActa'],
+                     "tamanoActa"            => $inventario['tamanoActa'],
+                     "tipoActa"              => $inventario['tipoActa'],
+                     "nombreArchivoActa"     => $inventario['nombreArchivoActa'],
+                     "idEquipo"              => $inventario['idEquipo']
+                      
+
+                  ];
+              }
+              $data = json_encode($data);
+              // print_r($data);die;
+              $this->view->dato = json_decode($data);
+              if(isset($data)){
+                $id = $post['id'];
+                $estado = $post['estado'];
+                if($estado == 'ACTIVO'){
+                  $subestado = $post['subestadoA'];
+                }else{
+                  $subestado = $post['subestadoI'];
+                }
+                $marca = $post['marca'];
+                $tipoArticulo = $post['tipoArticulo'];
+                if($tipoArticulo == 'TECLADO' or $tipoArticulo =='MOUSE' or $tipoArticulo == 'IMPRESORA' or $tipoArticulo == 'CAMARA' or $tipoArticulo == 'TELEVISOR' or $tipoArticulo == 'VIDEO BEAM'){
+                  $articulo = masterarticulo::findFirst([
+                      "id_articulo = :id:",
+                      'bind' => ['id' => $id]
+                  ]);
+
+                  $articulo->id_articulo = $id;
+                  $articulo->estado = $estado;
+                  $articulo->sub_estado = $subestado;
+                  $articulo->marca = $marca;
+                  $articulo->save();
+
+                  if($articulo->save()){
+                     $ok = $this->view->ok = "Actualizado";
+                    return $this->dispatcher->forward(
+                        [
+                            "action"     => "articulos",
+                            "params"     => [$ok]
+                        ]
+                    );
+                  }
+
+                }if($tipoArticulo == 'MONITOR'){
+
+                  $serial = $post['serialArticulo'];
+            
+
+                  $articulo = masterarticulo::findFirst([
+                        "id_articulo = :id:",
+                        'bind' => ['id' => $id]
+                    ]);
+
+                    $articulo->id_articulo = $id;
+                    $articulo->estado = $estado;
+                    $articulo->sub_estado = $subestado;
+                    $articulo->marca = $marca;
+                    $articulo->serial = $serial;
+                    $articulo->save();
+
+                    if($articulo->save()){
+                     $ok = $this->view->ok = "Actualizado";
+                    return $this->dispatcher->forward(
+                        [
+                            "action"     => "articulos",
+                            "params"     => [$ok]
+                        ]
+                    );
+                  }
+                }if($tipoArticulo == 'DIADEMA'){
+
+                  $serial = $post['serialArticulo'];
+                  $acta = $post['acta'];
+                  $nombre = $_FILES['archivo']['name'];
+                  $titulo= $_POST['titulo'];
+                  $descri= $_POST['descripcion'];
+                  $tipo = $_FILES['archivo']['type'];
+                  $tamanio = $_FILES['archivo']['size'];
+                  $ruta = $_FILES['archivo']['tmp_name'];
+                  $destino = "../public/diademas/" . $nombre;
+
+
+            
+
+                  $articulo = masterarticulo::findFirst([
+                        "id_articulo = :id:",
+                        'bind' => ['id' => $id]
+                  ]);
+
+                  $articulo->id_articulo = $id;
+                  $articulo->estado = $estado;
+                  $articulo->sub_estado = $subestado;
+                  $articulo->marca = $marca;
+                  $articulo->serial = $serial;
+                  $articulo->actas = $acta;
+                  $articulo->tituloActa = $titulo;
+                  $articulo->descripcionActa = $descri;
+                  $articulo->tamanoActa = $tamanio;
+                  $articulo->tipoActa = $tipo;
+                  $articulo->nombreArchivoActa = $nombre;
+
+                  if($articulo->save()){
+                     $ok = $this->view->ok = "Actualizado";
+                    return $this->dispatcher->forward(
+                        [
+                            "action"     => "articulos",
+                            "params"     => [$ok]
+                        ]
+                    );
+                  }
+                }if($tipoArticulo == 'SERVIDORES'){
+
+                  $serial = $post['serialArticulo'];
+
+                  $articulo = masterarticulo::findFirst([
+                        "id_articulo = :id:",
+                        'bind' => ['id' => $id]
+                  ]);
+
+                  $articulo->id_articulo = $id;
+                  $articulo->estado = $estado;
+                  $articulo->sub_estado = $subestado;
+                  $articulo->marca = $marca;
+                  $articulo->serial = $serial;
+                  $articulo->save();
+
+                  $os = $post['soServidor'];
+                  $licenciado = $post['licenciaServidor'];
+                  $arquitectura = $post['arquitecturaServidor'];
+                  $version = $post['versionServidor'];
+                  $tipoDisco = $post['tipoDisco'];
+                  $servidores = $post['servidores'];
+            
+                  $servidor = masterservidores::findFirst([
+                        "idmasterservidores = :servidores:",
+                        'bind' => ['servidores' => $servidores]
+                  ]);
+
+                  $servidor->idmasterservidores = $servidores;
+                  $servidor->os = $os;
+                  $servidor->licenciado = $licenciado;
+                  $servidor->arquitectura = $arquitectura;
+                  $servidor->version = $version;
+                  $servidor->tipoDisco = $tipoDisco;
+                  $servidor->save();
+                
+                  if($articulo->save()){
+                     $ok = $this->view->ok = "Actualizado";
+                    return $this->dispatcher->forward(
+                        [
+                            "action"     => "articulos",
+                            "params"     => [$ok]
+                        ]
+                    );
+                  }
+                }if($tipoArticulo == 'UPS'){
+
+                  $serial = $post['serialArticulo'];
+
+                  $articulo = masterarticulo::findFirst([
+                        "id_articulo = :id:",
+                        'bind' => ['id' => $id]
+                  ]);
+
+                  $articulo->id_articulo = $id;
+                  $articulo->estado = $estado;
+                  $articulo->sub_estado = $subestado;
+                  $articulo->marca = $marca;
+                  $articulo->serial = $serial;
+                  $articulo->save();
+
+                  $kva = $post['kva'];
+                  $cantidadKva = $post['cantidadKva'];
+                  // print_r($cantidadKva);die;
+                  $marcaKva = $post['marcaKva'];
+                  $serialKva = $post['serialKva'];
+                  $estadoUps = $post['estadoUps'];
+                  if ($estadoUps == 'ACTIVO') {
+                  
+                    $subestadoUps = $post['subestadoUpsA'];
+                  }else{
+
+                    $subestadoUps = $post['subestadoUpsI'];
+                  }
+
+                  $ciudadUps = $post['ciudadUps'];
+                  $ups = $post['ups'];
+            
+                  $upss = masterups::findFirst([
+                        "idmasterups = :ups:",
+                        'bind' => ['ups' => $ups]
+                  ]);
+
+                  $upss->idmasterups = $ups;
+                  $upss->kva = $kva;
+                  if ($upss->kva == 'SI') {
+                
+                    $upss->cuantosKva = $cantidadKva;
+                  }else{
+                    $upss->cuantosKva = 0;
+                  }
+                  $upss->marca = $marcaKva;
+                  $upss->serial = $serialKva;
+                  $upss->estado = $estadoUps;
+                  $upss->subestado = $subestadoUps;
+                  $upss->ciudad = $ciudadUps;
+                  $upss->save();
+                    // print_r($articulo->serial);die;
+
+                
+                  if($articulo->save()){
+                     $ok = $this->view->ok = "Actualizado";
+                    return $this->dispatcher->forward(
+                        [
+                            "action"     => "articulos",
+                            "params"     => [$ok]
+                        ]
+                    );
+                  }
+                }if($tipoArticulo == 'TORRE'){
+
+                  $serial = $post['serialArticulo'];
+
+                  $articulo = masterarticulo::findFirst([
+                        "id_articulo = :id:",
+                        'bind' => ['id' => $id]
+                  ]);
+
+                  $articulo->id_articulo = $id;
+                  $articulo->estado = $estado;
+                  $articulo->sub_estado = $subestado;
+                  $articulo->marca = $marca;
+                  $articulo->serial = $serial;
+                  $articulo->save();
+
+                    //editar RAM
+
+                  $Tram = $post['Tram'];
+                  $cantidadRam = $post['cantidadRam'];
+                  switch ($post['cantidadRam']) {
+                    case '1 Tarjeta':
+                        
+                        $serialRam1 = $post['serialRam1'];
+                        $ramtarjeta1 = $post['ramtarjeta1'];
+
+                        break;
+                    
+                    case '2 Tarjetas':
+                        
+                        $serialRam1 = $post['serialRam1'];
+                        $ramtarjeta1 = $post['ramtarjeta1'];
+                        $serialRam2 = $post['serialRam2'];
+                        $ramtarjeta2 = $post['ramtarjeta2'];
+
+                        break;
+
+                    case '3 Tarjetas':
+                    
+                        $serialRam1 = $post['serialRam1'];
+                        $ramtarjeta1 = $post['ramtarjeta1'];
+                        $serialRam2 = $post['serialRam2'];
+                        $ramtarjeta2 = $post['ramtarjeta2'];
+                        $serialRam3 = $post['serialRam3'];
+                        $ramtarjeta3 = $post['ramtarjeta3'];
+
+                    break;
+
+                    case '4 Tarjetas':
+                        
+                        $serialRam1 = $post['serialRam1'];
+                        $ramtarjeta1 = $post['ramtarjeta1'];
+                        $serialRam2 = $post['serialRam2'];
+                        $ramtarjeta2 = $post['ramtarjeta2'];
+                        $serialRam3 = $post['serialRam3'];
+                        $ramtarjeta3 = $post['ramtarjeta3'];
+                        $serialRam4 = $post['serialRam4'];
+                        $ramtarjeta4 = $post['ramtarjeta4'];
+
+                    break;
+                  }
+                  $ram = $post['ram'];
+            
+                  $rams = masterram::findFirst([
+                        "id_ram = :ram:",
+                        'bind' => ['ram' => $ram]
+                  ]);
+
+                  $rams->id_ram = $ram;
+                  $rams->capacidad_total = $Tram;
+                  $rams->cantidad = $cantidadRam;
+                  $rams->capacidad1 = $ramtarjeta1;
+                  $rams->serial1 = $serialRam1;
+                  $rams->capacidad2 = $ramtarjeta2;
+                  $rams->serial2 = $serialRam2;
+                  $rams->capacidad3 = $ramtarjeta3;
+                  $rams->serial3 = $serialRam3;
+                  $rams->capacidad4 = $ramtarjeta4;
+                  $rams->serial4 = $serialRam4;
+                  $rams->save();
+
+                    //editar DISCO DURO
+
+                  $discoDuro = $post['discoDuro'];
+                  $serialDiscoduro = $post['serialDiscoduro'];
+                  $disco_duro = $post['disco_duro'];
+            
+                  $discoDuros = masterdiscoduro::findFirst([
+                        "id_discoduro = :disco_duro:",
+                        'bind' => ['disco_duro' => $disco_duro]
+                  ]);
+
+                  $discoDuros->id_discoduro = $disco_duro;
+                  $discoDuros->serial = $serialDiscoduro;
+                  $discoDuros->capacidad = $discoDuro;
+                  $discoDuros->save();
+
+                    //editar FUENTE DE PODER
+
+                  $fuentePoder = $post['fuentePoder'];
+                  $serialFuentePoder = $post['serialFuentePoder'];
+                  $fuente_de_poder = $post['fuente_de_poder'];
+            
+                  $fuentePoders = masterfuentepoder::findFirst([
+                        "id_fuentepoder = :fuente_de_poder:",
+                        'bind' => ['fuente_de_poder' => $fuente_de_poder]
+                  ]);
+
+                  $fuentePoders->id_fuentepoder = $fuente_de_poder;
+                  $fuentePoders->serial = $serialFuentePoder;
+                  $fuentePoders->fuente_de_poder = $fuentePoder;
+                  $fuentePoders->save();
+
+                    //editar UNIDAD CD 
+
+                  $unidadCd = $post['unidadCd'];
+                  $serialunidadCd = $post['serialunidadCd'];
+                  $unidad_cd = $post['unidad_cd'];
+            
+                  $unidadCdS = masterunidadcd::findFirst([
+                        "id_unidadcd = :unidad_cd:",
+                        'bind' => ['unidad_cd' => $unidad_cd]
+                  ]);
+                  if (isset($unidadCdS)) {
+                    # code...
+                    $unidadCdS->id_unidadcd = $unidad_cd;
+                    $unidadCdS->serial = $serialunidadCd;
+                    $unidadCdS->unidad_cd = $unidadCd;
+                    $unidadCdS->save();
+
+                  }else{
+
+                    $unidadcdS = new masterunidadcd();
+    
+                    $unidadCdS->serial = $serialunidadCd;
+                    $unidadCdS->unidad_cd = $unidadCd;
+                    $unidadCdS->save();
+                  }
+
+
+                    //editar TARJETA VIDEO
+
+                  $tarjetaVideo = $post['tarjetaVideo'];
+                  $serialtarjetaVideo = $post['serialtarjetaVideo'];
+                  $tarjeta_de_video = $post['tarjeta_de_video'];
+            
+                  $tarjetaVideoS = mastertarjetadevideo::findFirst([
+                        "id_tarjetadevideo = :tarjeta_de_video:",
+                        'bind' => ['tarjeta_de_video' => $tarjeta_de_video]
+                  ]);
+
+                  $tarjetaVideoS->id_tarjetadevideo = $tarjeta_de_video;
+                  $tarjetaVideoS->tarjeta_de_video = $tarjetaVideo;
+                  $tarjetaVideoS->serial = $serialtarjetaVideo;
+                  $tarjetaVideoS->save();
+
+                    //editar TARJETA RED
+
+                  $tipotarjetaRed = $post['tipotarjetaRed'];
+                  $serialtipotarjetaRed = $post['serialtipotarjetaRed'];
+                  $tarjeta_de_red = $post['tarjeta_de_red'];
+            
+                  $tipotarjetaRedS = mastertarjetadered::findFirst([
+                        "id_tarjetadered = :tarjeta_de_red:",
+                        'bind' => ['tarjeta_de_red' => $tarjeta_de_red]
+                  ]);
+
+                  $tipotarjetaRedS->id_tarjetadered = $tarjeta_de_red;
+                  $tipotarjetaRedS->serial = $serialtipotarjetaRed;
+                  $tipotarjetaRedS->tarjeta_de_red = $tipotarjetaRed;
+                  $tipotarjetaRedS->save();
+
+                    //editar PROCESADOR
+
+                  $procesadorN = $post['procesadorN'];
+                  $serialProceador = $post['serialProceador'];
+                  $procesador = $post['procesador'];
+            
+                  $procesadores = masterprocesador::findFirst([
+                        "id_procesador = :procesador:",
+                        'bind' => ['procesador' => $procesador]
+                  ]);
+
+                  $procesadores->id_procesador = $procesador;
+                  $procesadores->serial = $serialProceador;
+                  $procesadores->procesador = $procesadorN;
+                  $procesadores->save();
+
+                    //editar SO
+
+                  $sistemaOp = $post['sistemaOp'];
+                  if ($sistemaOp == 'SI') {
+                    # code...
+                      $versionSO = $post['versionSO'];
+                  }else{
+
+                      $razonSO = $post['razonSO'];
+                  }
+                  $os = $post['os'];
+            
+                  $so = masteros::findFirst([
+                        "id_os = :os:",
+                        'bind' => ['os' => $os]
+                  ]);
+
+                  $so->id_os = $os;
+                  $so->sistema_operativo = $sistemaOp;
+                  $so->version = $versionSO;
+                  $so->observaciones = $razonSO;
+                  $so->save();
+
+                
+                  if($articulo->save()){
+                     $ok = $this->view->ok = "Actualizado";
+                    return $this->dispatcher->forward(
+                        [
+                            "action"     => "articulos",
+                            "params"     => [$ok]
+                        ]
+                    );
+                  }
+                }
+              }
+            }
+          }else{
+              return $this->dispatcher->forward(
+                  [
+                      "controller" => "erros",
+                      "action"     => "show401",
+                  ]
+              );
+          }
+    }
