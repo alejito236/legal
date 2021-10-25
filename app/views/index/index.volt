@@ -25,6 +25,7 @@
 
     }
     .logo{
+        margin-top:25px !important;
         margin-bottom:25px !important;
 
     }
@@ -37,7 +38,7 @@
         </div>
         <div class="col-md-4 col-md-offset-4 login">
             <div class="col-md-12 text-center">
-                <img src="{{url('/public/logo-logi.png')}}" class="logo" width="100" height="100" alt="">
+                <img src="{{url('/public/img/Logo-login.png')}}" class="logo" height="100" alt="">
                 <br><br>
             </div>
            

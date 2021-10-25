@@ -7,8 +7,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 </head>
 <style>
+    *{
+        color: #1e1e1c !important;
+    }
     .navbar-static-side {
-        background: #706f6e !important;
+        background: #706F6E !important;
         height: 100%;
         margin: 8px;
         border-radius: 20px;
@@ -161,11 +164,19 @@
     .btn-group .btn {
         width: 100%;
         margin: 15px;
-        font-size: 16px!importantgit ;
+        font-size: 16px!important ;
     }
 
-    H3 {
-        color: #706f6e !important;
+    .bg-primary{
+        background-color: #32659A !important;
+        color: #f2f2f2 !important;
+    }
+
+   
+
+    .row{
+        margin-bottom:10px;
+        margin-top:10px;
     }
 </style>
 
@@ -174,15 +185,15 @@
         <nav class="navbar navbar-default navbar-static-top">
             <div class="container-fluid" style="padding: 10px">
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="#"><img src="../public/logo-logi.png" height="100%" style=""></a>
+                  <img src="../public/img/Logo-nav.png" height="70px" style="margin-top: 20px;">
 
                     </a>
                 </div>
 
                 <ul class="nav navbar-nav ">
                     <li>
-                        <a class="navbar-minimalize   " href="#"><i class="fa fa-home text-primary  "
-                                style="font-size:20px;"></i> </a>
+                        <a class="navbar-minimalize " href="#" class="btn btn-default" ><i class="fa fa-home text-primary  "
+                                style="font-size:30px;"></i> </a>
                     </li>
 
                 </ul>
