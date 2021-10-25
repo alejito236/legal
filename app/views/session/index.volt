@@ -29,6 +29,9 @@
         margin-bottom:25px !important;
 
     }
+    .table{
+        border: 1px solid ;
+    }
 </style>
 
 <body style="background-color:#fff ;background-size: cover;">

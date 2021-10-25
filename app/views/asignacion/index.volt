@@ -86,7 +86,7 @@
                     <div class="row">
                         <div class="col-md-12">
                             <br>
-<table class="table table-responsive">
+<table class="table table-responsive table-bordered">
     <thead class="bg-primary" >
         <tr>
             <th style="color: #fff !important;" >  Tipo inmueble</th>
@@ -99,7 +99,7 @@
         <tr>
             <td>ssas</td>
             <td>ssas</td>
-            <td><select name="" id=""></select></td>
+            <td><select name="" id="" class="form-control"></select></td>
         </tr>
     </tbody>
 </table>

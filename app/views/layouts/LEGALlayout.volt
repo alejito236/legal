@@ -21,6 +21,14 @@
 
     .navbar-minimalize {
         margin-left: 18%;
+        border:none;
+        background-color: #fff !important;
+        padding: 6px;
+
+    }
+    .navbar-minimalize:hover{
+       
+        background-color: rgb(214, 207, 207) !important;
     }
 
     .navbar-header {
@@ -172,12 +180,23 @@
         color: #f2f2f2 !important;
     }
 
-   
+  .a{ background-color: #fff !important;
+        padding: 20px!important;
+        border:none;
+    }
+
+   .a:hover{
+    background-color: #fff !important;
+  
+        
+   }  
 
     .row{
         margin-bottom:10px;
         margin-top:10px;
     }
+ 
+
 </style>
 
 <body style="">
@@ -192,17 +211,17 @@
 
                 <ul class="nav navbar-nav ">
                     <li>
-                        <a class="navbar-minimalize " href="#" class="btn btn-default" ><i class="fa fa-home text-primary  "
-                                style="font-size:30px;"></i> </a>
+                        <button class="navbar-minimalize " style="" ><i class="fa fa-home text-primary  "
+                                style="font-size:30px;margin-top: 20px;"></i> </button>
                     </li>
 
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
 
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                            aria-expanded="false"><span class="fa fa-user  text-primary"></span> {{usuario}} <span
-                                class="caret"></span></a>
+                    <li class="dropdown" style="margin-top: 20px;">
+                        <button class="a dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                            aria-expanded="false" ><span class="fa fa-user  text-primary"></span> {{usuario}} <span
+                                class="caret"></span></button>
                         <ul class="dropdown-menu">
                             <li> <a href="{{url('session/end')}}">
                                     <i class="fas fa-sign-out-alt"></i> Salir
