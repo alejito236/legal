@@ -51,11 +51,18 @@
 
         color: #333 !important;
     }
+    .bg-gray{
+    
+        border-radius:30px,  !important;
+       background: #c1c1c1 !important;
+       
+       margin: 20px;
+    }
     .panel{
     
-        border-radius:20px;
-       background: #c1c1c1;
-    }
+    border-radius:30px,  !important;
+    margin: 20px;
+}
 
     body {
         background: #fff;
@@ -143,7 +150,7 @@
 <body style="">
     <div id="content">
         <nav class="navbar navbar-default navbar-static-top">
-            <div class="container-fluid" style="padding: 20px">
+            <div class="container-fluid" style="padding: 10px">
                 <div class="navbar-header">
                     <a class="navbar-brand" href="#"><img src="../public/logo-logi.png" height="100%" style=""></a>
 
@@ -246,13 +253,23 @@
     </nav>
 
     <div id="page-wrapper" class=" dashbard-1">
-         
-        <div class="row border-bottom">
-     
+        <div class="container" style="">
+        <div class="panel bg-gray">
+            <div class="panel-body">
+             <div class="row border-bottom">
+                <div class="panel">
+                    <div class="panel-body">
+                     <div class="row border-bottom">
             {{content()}}
         </div>
+        </div>
+        </div>
 
-
+         </div>
+</div>
+        </div>
+       
+</div> 
     </div>
 
 

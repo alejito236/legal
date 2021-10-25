@@ -14,7 +14,7 @@ class asignadorController extends ControllerBase
         $this->view->iduser = $this->session->get("iduser");
         $this->view->role = $this->session->get("role");
         $this->view->campana = $this->session->get("campana");
-        $this->view->setTemplateAfter('LOGISTICAadminlayout');
+        $this->view->setTemplateAfter('LEGALlayout');
         $this->date = new \DateTime('America/Bogota');
         $this->dateAnterior = new \DateTime('America/Bogota'.'-1 day');
         $this->view->campanas_roles = $this->session->get("campanas_roles");

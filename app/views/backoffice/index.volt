@@ -156,7 +156,7 @@
 					<tbody>
 						{% for item in getListadoGestion %}
 							<tr>
-								<form action="{{ url('backoffice/gestion') }}" method="POST">
+								<form action="{{ url('Backoffice/gestion') }}" method="POST">
 									<td>{{item.ventaid}}</td>
 									<td>{{item.fechaEntrega}}</td>
 									{% if item.franjaHoraria is 0 %}
