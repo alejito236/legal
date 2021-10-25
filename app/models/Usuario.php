@@ -82,8 +82,8 @@ class Usuario extends \Phalcon\Mvc\Model
     {
         $this->setSchema("logisticanovus");
         $this->setSource("usuario");
-        $this->hasMany('usuarioId', 'Gestionasignador', 'usuarioid', ['alias' => 'Gestionasignador']);
-        $this->hasMany('usuarioId', 'Gestionasignador', 'usuarioMensajeroId', ['alias' => 'Gestionasignador']);
+        $this->hasMany('usuarioId', 'GestionAsignacion', 'usuarioid', ['alias' => 'GestionAsignacion']);
+        $this->hasMany('usuarioId', 'GestionAsignacion', 'usuarioMensajeroId', ['alias' => 'GestionAsignacion']);
         $this->hasMany('usuarioId', 'Gestionbackoffice', 'usuarioid', ['alias' => 'Gestionbackoffice']);
         $this->hasMany('usuarioId', 'Gestionexpedidor', 'usuarioid', ['alias' => 'Gestionexpedidor']);
         $this->hasMany('usuarioId', 'Gestionmotorizado', 'usuarioid', ['alias' => 'Gestionmotorizado']);
@@ -98,7 +98,7 @@ class Usuario extends \Phalcon\Mvc\Model
         $this->hasMany('usuarioId', 'HistoricoEstado', 'usuarioId', ['alias' => 'HistoricoEstado']);
         $this->hasMany('usuarioId', 'HistoricoEstadocivil', 'usuarioId', ['alias' => 'HistoricoEstadocivil']);
         $this->hasMany('usuarioId', 'HistoricoGenero', 'usuarioId', ['alias' => 'HistoricoGenero']);
-        $this->hasMany('usuarioId', 'HistoricoGestionasignador', 'usuarioid', ['alias' => 'HistoricoGestionasignador']);
+        $this->hasMany('usuarioId', 'HistoricoGestionAsignacion', 'usuarioid', ['alias' => 'HistoricoGestionAsignacion']);
         $this->hasMany('usuarioId', 'HistoricoGestionbackoffice', 'usuarioid', ['alias' => 'HistoricoGestionbackoffice']);
         $this->hasMany('usuarioId', 'HistoricoGestionexpedidor', 'usuarioId', ['alias' => 'HistoricoGestionexpedidor']);
         $this->hasMany('usuarioId', 'HistoricoGestionmotorizado', 'usuarioid', ['alias' => 'HistoricoGestionmotorizado']);

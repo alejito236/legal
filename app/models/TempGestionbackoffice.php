@@ -17,7 +17,7 @@ class TempGestionbackoffice extends \Phalcon\Mvc\Model
      * @var integer
      * @Column(type="integer", length=11, nullable=false)
      */
-    public $gestionAsignadorId;
+    public $gestionAsignacionId;
 
     /**
      *
@@ -42,11 +42,11 @@ class TempGestionbackoffice extends \Phalcon\Mvc\Model
 
     /** Retorna los registros que estan siendo gestionados por los backoffice */
     public function getEnGestion(){
-        $consulta = "SELECT tv.tipoventa_id, v.ventaid, ge.gestionexpedidorid, ga.gestionasignadorid, u.usuarioid, concat(u.nombre, '', u.apellido) nombreBack,
+        $consulta = "SELECT tv.tipoventa_id, v.ventaid, ge.gestionexpedidorid, ga.gestionAsignacionid, u.usuarioid, concat(u.nombre, '', u.apellido) nombreBack,
         p.productoid, p.nombre nombreProducto, tv.cedulacliente, TIMESTAMPDIFF(MINUTE, tgb.fechaGestion, now()) minutos, tgb.temp_gestionbackofficeId gestionId
-        FROM temp_gestionbackoffice tgb, gestionasignador ga, gestionexpedidor ge, venta v, tipoventa tv, usuario u,
+        FROM temp_gestionbackoffice tgb, gestionAsignacion ga, gestionexpedidor ge, venta v, tipoventa tv, usuario u,
         producto p
-        where tgb.gestionasignadorid = ga.gestionasignadorid and ga.gestionexpedidorid = ge.gestionexpedidorid
+        where tgb.gestionAsignacionid = ga.gestionAsignacionid and ga.gestionexpedidorid = ge.gestionexpedidorid
         and ge.ventaid = v.ventaid and v.tipoventa_id = tv.tipoventa_id and tgb.usuarioid = u.usuarioid
         and p.productoid = v.productoid";
         $prepare = $this->getDi()->getShared("db")->prepare($consulta);

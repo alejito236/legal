@@ -17,7 +17,7 @@ class Gestionmotorizado extends \Phalcon\Mvc\Model
      * @var integer
      * @Column(type="integer", length=11, nullable=false)
      */
-    public $gestionAsignadorId;
+    public $gestionAsignacionId;
 
     /**
      *
@@ -76,7 +76,7 @@ class Gestionmotorizado extends \Phalcon\Mvc\Model
         $this->setSchema("logisticanovus");
         $this->setSource("gestionmotorizado");
         $this->hasMany('gestionMotorizadoId', 'HistoricoGestionmotorizado', 'gestionMotorizadoId', ['alias' => 'HistoricoGestionmotorizado']);
-        $this->belongsTo('gestionAsignadorId', '\Gestionasignador', 'gestionAsignadorId', ['alias' => 'Gestionasignador']);
+        $this->belongsTo('gestionAsignacionId', '\GestionAsignacion', 'gestionAsignacionId', ['alias' => 'GestionAsignacion']);
         $this->belongsTo('estadoMotorizado', '\Estado', 'estadoId', ['alias' => 'Estado']);
         $this->belongsTo('motivoId', '\Motivo', 'motivoId', ['alias' => 'Motivo']);
         $this->belongsTo('usuarioid', '\Usuario', 'usuarioId', ['alias' => 'Usuario']);

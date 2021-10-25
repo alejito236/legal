@@ -132,12 +132,12 @@ class HistoricoGestionmotorizado extends \Phalcon\Mvc\Model
         return parent::findFirst($parameters);
     }
 
-    public function getHistoricoReporte($gestionAsignadorId){
+    public function getHistoricoReporte($gestionAsignacionId){
         $consulta = "SELECT DATE_FORMAT(hgm.fechagestion,'%d/%m/%Y') fecha, e.nombre nombreEstado, m.nombre nombreMotivo, hgm.observacion,
         concat(EXTRACT(HOUR from hgm.fechagestion),':',EXTRACT(MINUTE from hgm.fechagestion))  hora, hgm.ubicacionReporte
         from historico_gestionmotorizado hgm, estado e, motivo m, gestionmotorizado gm 
         where hgm.estadoMotorizado = e.estadoid and hgm.motivoid = m.motivoid and hgm.gestionmotorizadoid = gm.gestionmotorizadoid
-        and gm.gestionAsignadorId = $gestionAsignadorId";
+        and gm.gestionAsignacionId = $gestionAsignacionId";
         //echo $consulta;die;
         $prepare = $this->getDi()->getShared("db")->prepare($consulta);
         $prepare->execute();

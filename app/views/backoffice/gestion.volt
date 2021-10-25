@@ -107,7 +107,7 @@
 						<input type="hidden" value="{{getGestionBack.tipoventa_id}}" name="tipoventa_id">
 						<input type="hidden" value="{{getGestionBack.ventaid}}" name="ventaid">
 						<input type="hidden" value="{{getGestionBack.gestionexpedidorid}}" name="gestionexpedidorid">
-						<input type="hidden" value="{{getGestionBack.gestionasignadorid}}" name="gestionasignadorid">
+						<input type="hidden" value="{{getGestionBack.gestionAsignacionid}}" name="gestionAsignacionid">
 						<input type="hidden" value="{{getGestionBack.productoid}}" name="productoid">
 						
 						<div class="col-md-12">
@@ -688,10 +688,10 @@
 	**/
 	function atras(){
 		let url = "{{url('backoffice/limpiarEnGestion')}}";
-		let gestionasignadorid = {{getGestionBack.gestionasignadorid}};
-		console.log(gestionasignadorid);
+		let gestionAsignacionid = {{getGestionBack.gestionAsignacionid}};
+		console.log(gestionAsignacionid);
 		let parametros = {
-			limpiarEnGestion: gestionasignadorid,
+			limpiarEnGestion: gestionAsignacionid,
 		}			
 		$.ajax({
 			type: "POST",

@@ -21,9 +21,9 @@ class SecurityPlugin extends Plugin
 	 * @returns AclList
 	 */
 	public function getAcl()
-	{
+	{  
 		if (!isset($this->persistent->acl)) {
-
+			
 			$acl = new AclList();
 
 			$acl->setDefaultAction(Acl::DENY);
@@ -43,7 +43,7 @@ class SecurityPlugin extends Plugin
 			foreach ($roles as $role) {
 				$acl->addRole($role);
 			}
-
+          
 			//Private area resources
 			$privateResources = [
 				'administrador'			=> ['index' , 'usuarios', 'editUsuario', 'nuevoUsuario','liberarRegistroBack','limpiarGestion' ],
@@ -52,7 +52,7 @@ class SecurityPlugin extends Plugin
 				'GOPASSsac'				=> ['index' , 'reagendar', 'historico','postventa', 'fidelizacion','guardarPostventa','guardarFidelizacion','buscarLocalidad','buscarBarrio','gestionBack'],
 				'GOPASSsac'				=> ['index' , 'reagendar', 'historico','postventa', 'fidelizacion','guardarPostventa','guardarFidelizacion','buscarLocalidad','buscarBarrio'],
 				'Backoffice'			=> ['index' ,'anular','gestion', 'guardarGestion','limpiarEnGestion','borrarArrayCiudades','anulados'],
-				'Asignador'				=> ['index' ,'guardarGestion','limpiarFecha'],
+				'Asignacion'			=> ['index','guardarGestion','limpiarFecha'],
 				'expedidor'				=> ['index' ,'generar','reagendar','limpiarFecha','ejecutaProcedimientos'],
 			];
 			
@@ -67,7 +67,6 @@ class SecurityPlugin extends Plugin
 				'errors'     => ['show401', 'show404', 'show500'],
 				'session'    => ['index', 'register', 'start', 'end'],
 				'contact'    => ['index', 'send'],
-				'Backoffice' => ['index' ,'anular','gestion', 'guardarGestion','limpiarEnGestion','borrarArrayCiudades','anulados'],
 				'prueba'	 => ['index'],
 				'aspirante'	 => ['session']
 			];
@@ -94,7 +93,7 @@ class SecurityPlugin extends Plugin
 			//The acl is stored in session, APC would be useful here too
 			$this->persistent->acl = $acl;
 		}
-
+	
 		return $this->persistent->acl;
 	}
 
@@ -151,7 +150,7 @@ class SecurityPlugin extends Plugin
 		$action = $dispatcher->getActionName();
 
 		$acl = $this->getAcl();
-
+  		print_r	($acl->isResource($controller));
 		if (!$acl->isResource($controller)) {
 			$dispatcher->forward([
 				'controller' => 'errors',

@@ -10,8 +10,9 @@
     .navbar-static-side {
         background: #706f6e !important;
         height: 100%;
-        margin: 10px;
+        margin: 8px;
         border-radius: 20px;
+        width :240px;
 
     }
 
@@ -51,18 +52,23 @@
 
         color: #333 !important;
     }
-    .bg-gray{
+
+    .bg-gray {
+
     
-        border-radius:30px,  !important;
-       background: #c1c1c1 !important;
-       
-       margin: 20px;
+        background: #c1c1c1 !important;
+
+        margin: 20px;
     }
-    .panel{
-    
-    border-radius:30px,  !important;
-    margin: 20px;
-}
+
+    .panel {
+     
+        border-radius: 20px !important;
+        margin: 10px !important;
+        padding: 5px!important;
+       
+
+    }
 
     body {
         background: #fff;
@@ -72,52 +78,62 @@
         color: #f2f2f2 !important;
     }
 
-    .btn-primary:hover{
-		background-color: #447bb6!important;
-        color: #f2f2f2!important;
-	}
-    .fa{
-        color: #32659a!important;
+    .btn-primary:hover {
+        background-color: #447bb6 !important;
+        color: #f2f2f2 !important;
     }
-    .btn{
+
+    .fa {
+        color: #32659a !important;
+    }
+
+    .btn {
         padding: 2px 10px 2px 10px !important;
         border-radius: 30px;
         font-weight: bold;
     }
-    .btn-primary{
-      
+
+    .btn-primary {
+
         background-color: #32659a !important;
-        color: #f2f2f2!important;
+        color: #f2f2f2 !important;
         border-color: #32659a !important;
-    
+
     }
-    .btn-danger{
-        background-color: #706f6e!important;
-        color: #f2f2f2!important;
-        border-color: #706f6e!important;
+
+    .btn-danger {
+        background-color: #706f6e !important;
+        color: #f2f2f2 !important;
+        border-color: #706f6e !important;
     }
-    .btn-danger:hover{
-        background-color: #8c8b8a!important;
-        color: #f2f2f2!important;
+
+    .btn-danger:hover {
+        background-color: #8c8b8a !important;
+        color: #f2f2f2 !important;
     }
-    .btn-warning:hover{
-        background-color: #b5b4b0!important; 
+
+    .btn-warning:hover {
+        background-color: #b5b4b0 !important;
     }
-    .btn-warning{        
-        background-color: #a5a4a4!important;
-        color: #f2f2f2!important;
-        border-color: #a5a4a4!important;
+
+    .btn-warning {
+        background-color: #a5a4a4 !important;
+        color: #f2f2f2 !important;
+        border-color: #a5a4a4 !important;
     }
-    .btn-success{
-        background-color: #288006!important;
-        color: #f2f2f2!important;
-        border-color: #288006!important;
+
+    .btn-success {
+        background-color: #288006 !important;
+        color: #f2f2f2 !important;
+        border-color: #288006 !important;
     }
-    .form-control{
+
+    .form-control {
         border-radius: 10px !important;
 
     }
-    .form-control-logistica{
+
+    .form-control-logistica {
         border-radius: 10px !important;
         border-color: #439025;
 
@@ -136,15 +152,21 @@
     .text-primary {
         color: #316598 !important;
     }
-    .btn-group{
-        display: flex;
-        width: 100%;
-    }
-    .btn-group .btn{
-        width: 100%;
-        margin:12px;
+
+    .btn-group {
+       display: flex;
+       margin-left: 18px;
     }
 
+    .btn-group .btn {
+        width: 100%;
+        margin: 15px;
+        font-size: 16px!importantgit ;
+    }
+
+    H3 {
+        color: #706f6e !important;
+    }
 </style>
 
 <body style="">
@@ -180,19 +202,19 @@
                 </ul>
             </div>
         </nav>
-<nav class="navbar-default navbar-static-side" role="navigation">
-    <div class="sidebar-collapse">
-        <ul class="nav " id="side-menu">
-            <li class="nav-header">
-                <div class="dropdown profile-element text-center">
+        <nav class="navbar-default navbar-static-side" role="navigation">
+            <div class="sidebar-collapse">
+                <ul class="nav " id="side-menu">
+                    <li class="nav-header">
+                        <div class="dropdown profile-element text-center">
 
                             <div class="menu">
-                    {% if campanas_roles is defined %}
-                    {% for item in campanas_roles %}
-                    <!--Si la campanña es 4 (Logistica)-->
-                    {% if item['campana'] is 4 %}
-                    <!--Si el rol es 1 Backoffice se muestra opcion del index de backoffice-->
-                    {% if item['rol'] is 1 %}
+                                {% if campanas_roles is defined %}
+                                {% for item in campanas_roles %}
+                                <!--Si la campanña es 4 (Logistica)-->
+                                {% if item['campana'] is 4 %}
+                                <!--Si el rol es 1 Backoffice se muestra opcion del index de backoffice-->
+                                {% if item['rol'] is 1 %}
                     <li class="menu">
                         <a href="{{url('backoffice/index')}}">
 
@@ -206,12 +228,12 @@
                         </a>
                     </li>
                     {% endif %}
-                    <!--Si el rol es 2 Asignador se muestra opcion del index de asignador-->
+                    <!--Si el rol es 2 Asignacion se muestra opcion del index de Asignacion-->
                     {% if item['rol'] is 2 %}
                     <li class="menu">
-                        <a href="{{url('asignador/index')}}">
+                        <a href="{{url('asignacion/index')}}">
 
-                            <span class="nav-label text-black">Asignador</span>
+                            <span class="nav-label text-black">Asignacion</span>
                         </a>
                     </li>
                     {% endif %}
@@ -240,10 +262,10 @@
                     </li>
                     {% endif %}
 
-                            {% endif %}
+                    {% endif %}
 
-                            {% endfor %}
-                            {% endif %}
+                    {% endfor %}
+                    {% endif %}
             </div>
     </div>
 
@@ -252,24 +274,14 @@
     </div>
     </nav>
 
-    <div id="page-wrapper" class=" dashbard-1">
-        <div class="container" style="">
-        <div class="panel bg-gray">
-            <div class="panel-body">
-             <div class="row border-bottom">
-                <div class="panel">
-                    <div class="panel-body">
-                     <div class="row border-bottom">
-            {{content()}}
-        </div>
-        </div>
-        </div>
+    <div id="page-wrapper" class=" ">
+        <div class="container" style="margin: 20px;width: 100%;">
 
-         </div>
-</div>
+            {{content()}}
+
+
+
         </div>
-       
-</div> 
     </div>
 
 

@@ -185,7 +185,7 @@
 										<td>PENDIENTE</td>
 									{% endif %}
 									<input type="hidden" value="{{item.tipoventa_id}}" id="tipoVenta" name="tipoVenta">
-									<input type="hidden" value="{{item.gestionasignadorid}}" id="gestionasignadorid" name="gestionasignadorid">
+									<input type="hidden" value="{{item.gestionAsignacionid}}" id="gestionAsignacionid" name="gestionAsignacionid">
 									<input type="hidden" value="{{item.productoid}}" id="productoid" name="productoid">
 									{% if arrayCiudades is defined %}
 										<input type="hidden" value="{{arrayCiudades}}" id="arrayCiudades" name="arrayCiudades">									
@@ -344,14 +344,14 @@
 						let checkAnular = $(this).find('input[type="checkbox"]').prop('checked');
 						if(checkAnular){
 							let tipoVenta = $(this).find('input[id="tipoVenta"]').val()
-							let gestionasignadorid = $(this).find('input[id="gestionasignadorid"]').val()
+							let gestionAsignacionid = $(this).find('input[id="gestionAsignacionid"]').val()
 							let productoid = $(this).find('input[id="productoid"]').val()
 							/*let datos={
 								id,tipoProducto
 							}*/
 							
 							//array.push(datos);
-							arrayAnular.push({tipoVenta:tipoVenta, gestionasignadorid: gestionasignadorid, productoid: productoid});
+							arrayAnular.push({tipoVenta:tipoVenta, gestionAsignacionid: gestionAsignacionid, productoid: productoid});
 						}
 					});
 					if(arrayAnular.length > 1){

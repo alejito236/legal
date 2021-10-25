@@ -82,7 +82,7 @@ class Gestionexpedidor extends \Phalcon\Mvc\Model
     {
         $this->setSchema("logisticanovus");
         $this->setSource("gestionexpedidor");
-        $this->hasMany('gestionExpedidorId', 'Gestionasignador', 'gestionExpedidorId', ['alias' => 'Gestionasignador']);
+        $this->hasMany('gestionExpedidorId', 'GestionAsignacion', 'gestionExpedidorId', ['alias' => 'GestionAsignacion']);
         $this->hasMany('gestionExpedidorId', 'HistoricoGestionexpedidor', 'gestionExpedidorId', ['alias' => 'HistoricoGestionexpedidor']);
         $this->belongsTo('ventaId', '\Venta', 'ventaId', ['alias' => 'Venta']);
         $this->belongsTo('usuarioid', '\Usuario', 'usuarioId', ['alias' => 'Usuario']);

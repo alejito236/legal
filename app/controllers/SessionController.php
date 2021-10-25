@@ -189,12 +189,12 @@ class SessionController extends ControllerBase
                         );
                     }
 
-                    //Asignador  2                   
+                    //Asignacion  2                   
                     if ($user[0]['rolId'] == 2) {
                         return $this->dispatcher->forward(
                             [
 
-                                "controller" => "asignador",
+                                "controller" => "asignacion",
                                 "action"     => "index",
                             ]
                         );

@@ -137,11 +137,11 @@ class backofficeController extends ControllerBase
         foreach ($datos as $dato){
 
             $tipoVenta = $dato['tipoVenta'];
-            $gestionasignadorid = $dato['gestionasignadorid'];
+            $gestionAsignacionid = $dato['gestionAsignacionid'];
             $productoid = $dato['productoid'];
             $existeGestionBack = Gestionbackoffice::findFirst([
-                'conditions'    => 'gestionAsignadorId = :gestionasignadorid:',
-                'bind'          => ['gestionasignadorid' => $gestionasignadorid]
+                'conditions'    => 'gestionAsignacionId = :gestionAsignacionid:',
+                'bind'          => ['gestionAsignacionid' => $gestionAsignacionid]
             ]);
             // echo empty($existeGestionBack);die;
             if(!empty($existeGestionBack)){
@@ -250,11 +250,11 @@ class backofficeController extends ControllerBase
         $borro = 0;
         if(isset($post['btnEditar'])){
             $tipoVentaId = $post['tipoVenta'];
-            $gestionasignadorid = $post['gestionasignadorid'];
+            $gestionAsignacionid = $post['gestionAsignacionid'];
             //valida que el registro no este en gestion (bloqueado) por algún usuario
             $validaTempGestion = TempGestionbackoffice::findFirst([
-                'conditions'    => 'gestionAsignadorId = :gestionasignadorid:',
-                'bind'          => ['gestionasignadorid' => $gestionasignadorid]
+                'conditions'    => 'gestionAsignacionId = :gestionAsignacionid:',
+                'bind'          => ['gestionAsignacionid' => $gestionAsignacionid]
             ]);
             if(!empty($validaTempGestion)){
                 $usuarioEnGestion = $validaTempGestion->usuarioid;                
@@ -276,7 +276,7 @@ class backofficeController extends ControllerBase
                 
                 //Inserta en la tabla temp_gestionnackoffice
                 $insertTempGestionBack = new TempGestionbackoffice();
-                $insertTempGestionBack->gestionAsignadorId = $gestionasignadorid;
+                $insertTempGestionBack->gestionAsignacionId = $gestionAsignacionid;
                 $insertTempGestionBack->usuarioid = $usuario;
                 $insertTempGestionBack->fechaGestion = $dateHoy;
                 $insertTempGestionBack->ip = $ip;
@@ -294,14 +294,14 @@ class backofficeController extends ControllerBase
 
                 if($insertTempGestionBack->save()){                    
                     $gestionBack = new Gestionbackoffice();            
-                    $getGestionBack = $gestionBack->getGestionBack($gestionasignadorid);
+                    $getGestionBack = $gestionBack->getGestionBack($gestionAsignacionid);
                     // print_r($getGestionBack);die;
                     $getGestionBack = $getGestionBack->fetch();
                     $getGestionBack = json_encode($getGestionBack);
                     $this->view->getGestionBack = json_decode($getGestionBack);
 
                     $historicoMotorizado = new HistoricoGestionmotorizado();
-                    $getHistoricoReporte = $historicoMotorizado->getHistoricoReporte($gestionasignadorid);
+                    $getHistoricoReporte = $historicoMotorizado->getHistoricoReporte($gestionAsignacionid);
                     $getHistoricoReporte = $getHistoricoReporte->fetchAll();
                     $getHistoricoReporte = json_encode($getHistoricoReporte);
                     $this->view->getHistoricoReporte = json_decode($getHistoricoReporte);            
@@ -367,7 +367,7 @@ class backofficeController extends ControllerBase
         $tipoventa_id = $post['tipoventa_id'];
         $ventaid = $post['ventaid'];
         $gestionexpedidorid = $post['gestionexpedidorid'];
-        $gestionasignadorid = $post['gestionasignadorid'];
+        $gestionAsignacionid = $post['gestionAsignacionid'];
         $estadoBack = $post['estadoBack'];
         $observacionBack = $post['observacionBack'];
         $productoid = $post['productoid'];
@@ -385,14 +385,14 @@ class backofficeController extends ControllerBase
             $estado = 23;            
         }
         $existeGestionBack = Gestionbackoffice::findFirst([
-            'conditions'    => 'gestionAsignadorId = :gestionasignadorid:',
-            'bind'          => ['gestionasignadorid' => $gestionasignadorid]
+            'conditions'    => 'gestionAsignacionId = :gestionAsignacionid:',
+            'bind'          => ['gestionAsignacionid' => $gestionAsignacionid]
         ]);
 
         //Si existe la gestion actualiza el registro sino inserta un nuevo registro
         if(!empty($existeGestionBack)){
             //Actualiza en gestionbackoffice si ya existe el registro
-            $existeGestionBack->gestionAsignadorId = $gestionasignadorid;
+            $existeGestionBack->gestionAsignacionId = $gestionAsignacionid;
             $existeGestionBack->estadoBackoffice = $estadoBack;                 
             $existeGestionBack->usuarioid = $usuario; 
             $existeGestionBack->observacion = $observacionBack; 
@@ -430,7 +430,7 @@ class backofficeController extends ControllerBase
                 if($inserHistBack->save()){
                     //Libera el registro de la gestion
                     $deleteTempGEstion = TempGestionbackoffice::findFirst([
-                        'conditions'    => 'gestionAsignadorId = :id:',
+                        'conditions'    => 'gestionAsignacionId = :id:',
                         'bind'          => ['id' => $gestionexpedidorid]
                     ]);
                     
@@ -438,12 +438,12 @@ class backofficeController extends ControllerBase
                         $deleteTempGEstion->delete();                        
                     }
                     if($estadoBack == 29){
-                        $gestionasignador = Gestionasignador::findFirst([
-                            'conditions'    => 'gestionAsignadorId = :gestionasignadorid:',
-                            'bind'          => ['gestionasignadorid' => $gestionasignadorid]
+                        $gestionAsignacion = GestionAsignacion::findFirst([
+                            'conditions'    => 'gestionAsignacionId = :gestionAsignacionid:',
+                            'bind'          => ['gestionAsignacionid' => $gestionAsignacionid]
                         ]);
-                        $gestionasignador->tipificacionId = 2;
-                        $gestionasignador->save();
+                        $gestionAsignacion->tipificacionId = 2;
+                        $gestionAsignacion->save();
                         $gestionExpedidor = Gestionexpedidor::findFirst([
                             'conditions'    => 'gestionExpedidorId = :gestionexpedidorid:',
                             'bind'          => ['gestionexpedidorid' => $gestionexpedidorid]
@@ -474,7 +474,7 @@ class backofficeController extends ControllerBase
                 }else{
                     //Libera el registro de la gestion
                     $deleteTempGEstion = TempGestionbackoffice::findFirst([
-                        'conditions'    => 'gestionAsignadorId = :id:',
+                        'conditions'    => 'gestionAsignacionId = :id:',
                         'bind'          => ['id' => $gestionexpedidorid]
                     ]);
                     
@@ -492,7 +492,7 @@ class backofficeController extends ControllerBase
             }else{
                 //Libera el registro de la gestion
                 $deleteTempGEstion = TempGestionbackoffice::findFirst([
-                    'conditions'    => 'gestionAsignadorId = :id:',
+                    'conditions'    => 'gestionAsignacionId = :id:',
                     'bind'          => ['id' => $gestionexpedidorid]
                 ]);
                 
@@ -510,7 +510,7 @@ class backofficeController extends ControllerBase
         }else{
             //inserta en gestion backoffice en caso de que no exista el registro
             $inserGestionBack = new Gestionbackoffice();
-            $inserGestionBack->gestionAsignadorId = $gestionasignadorid;
+            $inserGestionBack->gestionAsignacionId = $gestionAsignacionid;
             $inserGestionBack->estadoBackoffice = $estadoBack;                 
             $inserGestionBack->usuarioid = $usuario; 
             $inserGestionBack->observacion = $observacionBack; 
@@ -545,7 +545,7 @@ class backofficeController extends ControllerBase
                 if($inserHistBack->save()){
                     //Libera el registro de la gestion
                     $deleteTempGEstion = TempGestionbackoffice::findFirst([
-                        'conditions'    => 'gestionAsignadorId = :id:',
+                        'conditions'    => 'gestionAsignacionId = :id:',
                         'bind'          => ['id' => $gestionexpedidorid]
                     ]);
                     
@@ -553,12 +553,12 @@ class backofficeController extends ControllerBase
                         $deleteTempGEstion->delete();                        
                     }
                     if($estadoBack == 29){
-                        $gestionasignador = Gestionasignador::findFirst([
-                            'conditions'    => 'gestionAsignadorId = :gestionasignadorid:',
-                            'bind'          => ['gestionasignadorid' => $gestionasignadorid]
+                        $gestionAsignacion = GestionAsignacion::findFirst([
+                            'conditions'    => 'gestionAsignacionId = :gestionAsignacionid:',
+                            'bind'          => ['gestionAsignacionid' => $gestionAsignacionid]
                         ]);
-                        $gestionasignador->tipificacionId = 2;
-                        $gestionasignador->save();
+                        $gestionAsignacion->tipificacionId = 2;
+                        $gestionAsignacion->save();
                         $gestionExpedidor = Gestionexpedidor::findFirst([
                             'conditions'    => 'gestionExpedidorId = :gestionexpedidorid:',
                             'bind'          => ['gestionexpedidorid' => $gestionexpedidorid]
@@ -589,7 +589,7 @@ class backofficeController extends ControllerBase
                 }else{
                     //Libera el registro de la gestion
                     $deleteTempGEstion = TempGestionbackoffice::findFirst([
-                        'conditions'    => 'gestionAsignadorId = :id:',
+                        'conditions'    => 'gestionAsignacionId = :id:',
                         'bind'          => ['id' => $gestionexpedidorid]
                     ]);
                     
@@ -607,7 +607,7 @@ class backofficeController extends ControllerBase
             }else{
                 //Libera el registro de la gestion
                 $deleteTempGEstion = TempGestionbackoffice::findFirst([
-                    'conditions'    => 'gestionAsignadorId = :id:',
+                    'conditions'    => 'gestionAsignacionId = :id:',
                     'bind'          => ['id' => $gestionexpedidorid]
                 ]);
                 
@@ -634,7 +634,7 @@ class backofficeController extends ControllerBase
         if(isset($post['limpiarEnGestion'])){
             $id = $post['limpiarEnGestion'];
             $deleteTempGEstion = TempGestionbackoffice::findFirst([
-                'conditions'    => 'gestionAsignadorId = :id:',
+                'conditions'    => 'gestionAsignacionId = :id:',
                 'bind'          => ['id' => $id]
             ]);
             

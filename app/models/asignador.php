@@ -2,7 +2,7 @@
 
 use Phalcon\Mvc\Model;
 
-class Asignador extends Model
+class Asignacion extends Model
 {
     /**
      * @var integer

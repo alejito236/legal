@@ -1,6 +1,6 @@
 <?php
 
-class HistoricoGestionasignador extends \Phalcon\Mvc\Model
+class HistoricoGestionAsignacion extends \Phalcon\Mvc\Model
 {
 
     /**
@@ -10,28 +10,28 @@ class HistoricoGestionasignador extends \Phalcon\Mvc\Model
      * @Identity
      * @Column(type="integer", length=11, nullable=false)
      */
-    public $historico_gestionAsignadorId;
+    public $historico_gestionAsignacionId;
 
     /**
      *
      * @var integer
      * @Column(type="integer", length=11, nullable=false)
      */
-    public $gestionAsignadorId;
+    public $gestionAsignacionId;
 
     /**
      *
      * @var integer
      * @Column(type="integer", length=11, nullable=false)
      */
-    public $estadoAsignador;
+    public $estadoAsignacion;
 
     /**
      *
      * @var integer
      * @Column(type="integer", length=11, nullable=false)
      */
-    public $criterioAsignador;
+    public $criterioAsignacion;
 
     /**
      *
@@ -95,8 +95,8 @@ class HistoricoGestionasignador extends \Phalcon\Mvc\Model
     public function initialize()
     {
         $this->setSchema("logisticanovus");
-        $this->setSource("historico_gestionasignador");
-        $this->belongsTo('gestionAsignadorId', '\Gestionasignador', 'gestionAsignadorId', ['alias' => 'Gestionasignador']);
+        $this->setSource("historico_gestionAsignacion");
+        $this->belongsTo('gestionAsignacionId', '\GestionAsignacion', 'gestionAsignacionId', ['alias' => 'GestionAsignacion']);
         $this->belongsTo('usuarioid', '\Usuario', 'usuarioId', ['alias' => 'Usuario']);
     }
 
@@ -107,14 +107,14 @@ class HistoricoGestionasignador extends \Phalcon\Mvc\Model
      */
     public function getSource()
     {
-        return 'historico_gestionasignador';
+        return 'historico_gestionAsignacion';
     }
 
     /**
      * Allows to query a set of records that match the specified conditions
      *
      * @param mixed $parameters
-     * @return HistoricoGestionasignador[]|HistoricoGestionasignador|\Phalcon\Mvc\Model\ResultSetInterface
+     * @return HistoricoGestionAsignacion[]|HistoricoGestionAsignacion|\Phalcon\Mvc\Model\ResultSetInterface
      */
     public static function find($parameters = null)
     {
@@ -125,7 +125,7 @@ class HistoricoGestionasignador extends \Phalcon\Mvc\Model
      * Allows to query the first record that match the specified conditions
      *
      * @param mixed $parameters
-     * @return HistoricoGestionasignador|\Phalcon\Mvc\Model\ResultInterface
+     * @return HistoricoGestionAsignacion|\Phalcon\Mvc\Model\ResultInterface
      */
     public static function findFirst($parameters = null)
     {

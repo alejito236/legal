@@ -1,6 +1,6 @@
 <?php
 
-class Gestionasignador extends \Phalcon\Mvc\Model
+class GestionAsignacion extends \Phalcon\Mvc\Model
 {
 
     /**
@@ -10,7 +10,7 @@ class Gestionasignador extends \Phalcon\Mvc\Model
      * @Identity
      * @Column(type="integer", length=11, nullable=false)
      */
-    public $gestionAsignadorId;
+    public $gestionAsignacionId;
 
     /**
      *
@@ -24,14 +24,14 @@ class Gestionasignador extends \Phalcon\Mvc\Model
      * @var integer
      * @Column(type="integer", length=11, nullable=true)
      */
-    public $estadoAsignador;
+    public $estadoAsignacion;
 
     /**
      *
      * @var integer
      * @Column(type="integer", length=11, nullable=true)
      */
-    public $criterioAsignador;
+    public $criterioAsignacion;
 
     /**
      *
@@ -74,13 +74,13 @@ class Gestionasignador extends \Phalcon\Mvc\Model
     public function initialize()
     {
         $this->setSchema("logisticanovus");
-        $this->setSource("gestionasignador");
-        $this->hasMany('gestionAsignadorId', 'Gestionbackoffice', 'gestionAsignadorId', ['alias' => 'Gestionbackoffice']);
-        $this->hasMany('gestionAsignadorId', 'Gestionmotorizado', 'gestionAsignadorId', ['alias' => 'Gestionmotorizado']);
-        $this->hasMany('gestionAsignadorId', 'HistoricoGestionasignador', 'gestionAsignadorId', ['alias' => 'HistoricoGestionasignador']);
+        $this->setSource("gestionAsignacion");
+        $this->hasMany('gestionAsignacionId', 'Gestionbackoffice', 'gestionAsignacionId', ['alias' => 'Gestionbackoffice']);
+        $this->hasMany('gestionAsignacionId', 'Gestionmotorizado', 'gestionAsignacionId', ['alias' => 'Gestionmotorizado']);
+        $this->hasMany('gestionAsignacionId', 'HistoricoGestionAsignacion', 'gestionAsignacionId', ['alias' => 'HistoricoGestionAsignacion']);
         $this->belongsTo('gestionExpedidorId', '\Gestionexpedidor', 'gestionExpedidorId', ['alias' => 'Gestionexpedidor']);
-        $this->belongsTo('estadoAsignador', '\Estado', 'estadoId', ['alias' => 'Estado']);
-        $this->belongsTo('criterioAsignador', '\Criterio', 'criterioId', ['alias' => 'Criterio']);
+        $this->belongsTo('estadoAsignacion', '\Estado', 'estadoId', ['alias' => 'Estado']);
+        $this->belongsTo('criterioAsignacion', '\Criterio', 'criterioId', ['alias' => 'Criterio']);
         $this->belongsTo('usuarioid', '\Usuario', 'usuarioId', ['alias' => 'Usuario']);
         $this->belongsTo('usuarioMensajeroId', '\Usuario', 'usuarioId', ['alias' => 'Usuario']);
     }
@@ -92,14 +92,14 @@ class Gestionasignador extends \Phalcon\Mvc\Model
      */
     public function getSource()
     {
-        return 'gestionasignador';
+        return 'gestionAsignacion';
     }
 
     /**
      * Allows to query a set of records that match the specified conditions
      *
      * @param mixed $parameters
-     * @return Gestionasignador[]|Gestionasignador|\Phalcon\Mvc\Model\ResultSetInterface
+     * @return GestionAsignacion[]|GestionAsignacion|\Phalcon\Mvc\Model\ResultSetInterface
      */
     public static function find($parameters = null)
     {
@@ -110,14 +110,14 @@ class Gestionasignador extends \Phalcon\Mvc\Model
      * Allows to query the first record that match the specified conditions
      *
      * @param mixed $parameters
-     * @return Gestionasignador|\Phalcon\Mvc\Model\ResultInterface
+     * @return GestionAsignacion|\Phalcon\Mvc\Model\ResultInterface
      */
     public static function findFirst($parameters = null)
     {
         return parent::findFirst($parameters);
     }
 
-    public function getListadoAsignador($fechaFin){
+    public function getListadoAsignacion($fechaFin){
         $consulta = "SELECT tv.tipoVenta_Id, v.ventaId, ge.gestionExpedidorId, tv.cedulaCliente, tv.placa, 
         p.productoId, p.nombre nombreProducto, c.ciudadId, c.nombre nombreCiudad, 
         v.franjaHoraria, v.fechaEntrega, v.tipificacionId, t.nombre
@@ -125,7 +125,7 @@ class Gestionasignador extends \Phalcon\Mvc\Model
         where tv.tipoVenta_Id = v.tipoVenta_Id and v.ventaId = ge.ventaId and v.productoId = p.productoId 
         and v.ciudadId = c.ciudadId and ge.estadoExpedidorId = 1
         and DATE_FORMAT(v.fechaentrega,'%Y/%m/%d') >= DATE_FORMAT(now(),'%Y/%m/%d') 
-        and ge.gestionExpedidorId not in (select gestionExpedidorId from gestionAsignador)
+        and ge.gestionExpedidorId not in (select gestionExpedidorId from gestionAsignacion)
         and DATE_FORMAT(v.fechaentrega,'%Y/%m/%d') <= date('$fechaFin')
         and t.tipificacionId = v.tipificacionId and t.tipificacionId  = 1 and ge.tipificacionId = 1
         UNION
@@ -136,7 +136,7 @@ class Gestionasignador extends \Phalcon\Mvc\Model
         where tv.tipoVenta_Id = v.tipoVenta_Id and v.ventaId = ge.ventaId and v.productoId = p.productoId 
         and v.ciudadId = c.ciudadId and ge.estadoExpedidorId = 1
         and DATE_FORMAT(v.fechaentrega,'%Y/%m/%d') >= DATE_FORMAT(now(),'%Y/%m/%d') 
-        and ge.gestionExpedidorId not in (select gestionExpedidorId from gestionAsignador where estadoasignador = 5 and tipificacionId != 2)
+        and ge.gestionExpedidorId not in (select gestionExpedidorId from gestionAsignacion where estadoAsignacion = 5 and tipificacionId != 2)
         and DATE_FORMAT(v.fechaentrega,'%Y/%m/%d') <= date('$fechaFin')
         and t.tipificacionId = v.tipificacionId and t.tipificacionId  in (2,3) and ge.tipificacionId = 1
         group by 2";

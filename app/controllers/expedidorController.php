@@ -223,7 +223,7 @@ public function reagendarAction(){
                     $insertGestionExpedidor->tipificacionId = 5;
                 }
         
-                //print_r($insertGestionAsignador);die;
+                //print_r($insertGestionAsignacion);die;
                     // try{
                     //     if($insertGestionExpedidor->save()==false){
                     //     $messages = $insertGestionExpedidor->getMessages();

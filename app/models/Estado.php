@@ -27,7 +27,7 @@ class Estado extends \Phalcon\Mvc\Model
         $this->setSchema("logisticanovus");
         $this->setSource("estado");
         $this->hasMany('estadoId', 'EstadoRol', 'estadoId', ['alias' => 'EstadoRol']);
-        $this->hasMany('estadoId', 'Gestionasignador', 'estadoAsignador', ['alias' => 'Gestionasignador']);
+        $this->hasMany('estadoId', 'GestionAsignacion', 'estadoAsignacion', ['alias' => 'GestionAsignacion']);
         $this->hasMany('estadoId', 'Gestionbackoffice', 'estadoBackoffice', ['alias' => 'Gestionbackoffice']);
         $this->hasMany('estadoId', 'Gestionbackoffice', 'estadoCierre', ['alias' => 'Gestionbackoffice']);
         $this->hasMany('estadoId', 'Gestionmotorizado', 'estadoMotorizado', ['alias' => 'Gestionmotorizado']);
@@ -78,7 +78,7 @@ class Estado extends \Phalcon\Mvc\Model
         return $prepare;
     }
 
-    public function getEstadoAsignador(){
+    public function getEstadoAsignacion(){
         $consulta = "SELECT e.estadoid, e.nombre
         from rol r, estado_rol re, estado e
         where r.rolid = re.rolid and re.estadoid = e.estadoid
