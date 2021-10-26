@@ -42,114 +42,31 @@
             </div>
 
 
-                <H3 style="margin: 10px 0px 20px 0px;"> <img src="{{url('/public/img/icono.png')}}" height="25px" style="margin-top: -10px;"> <span> INFORMACION DE
-                        ESTUDIO DE TITULOS </span></H3>
-
-           
-
-            <div class="panel">
-                <div class="panel-body">
-                    <div class="row" style="margin-bottom: 5px;">
-                        <div class="col-md-6">
-                            <div class="col-md-4"><label for="">ID requerimiento</label></div>
-                            <div class="col-md-8">
-                                <input type="text" class="form-control form-control-sm ">
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="col-md-4"><label for="">Tipo de Documento</label></div>
-                            <div class="col-md-8">
-                                <input type="text" class="form-control form-control-sm">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="col-md-4"><label for="">N° Documento</label></div>
-                            <div class="col-md-8">
-                                <input type="text" class="form-control form-control-sm">
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="col-md-4"><label for="">Nombre y Apellidos</label></div>
-                            <div class="col-md-8">
-                                <input type="text" class="form-control form-control-sm">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="col-md-4"><label for="">N° Estudios</label></div>
-                            <div class="col-md-8">
-                                <input type="number" class="form-control">
-                            </div>
-                        </div>
-                        <div class="col-md-4 col-md-offset-2" style="padding-right: 30px;" >
-                            <br><a class=" btn  btn-primary btn-block btn-sm" style="  margin-right:20px;">adjunto</a>
-                            <br><a class=" btn  btn-primary btn-block btn-sm" style=" margin-right:20px;">adjunto</a>
-                            <br><a class=" btn  btn-primary btn-block btn-sm" style="margin-right:20px;">adjunto</a>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-md-10 col-md-offset-1">
-                            <br>
-                            <table class="table table-responsive table-bordered">
-                                <thead class="bg-primary">
-                                    <tr>
-                                        <th style="color: #fff !important;"> Tipo inmueble</th>
-                                        <th style="color: #fff !important;"> N° Matrícula</th>
-                                        <th style="color: #fff !important;"> Asignado</th>
-
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>ssas</td>
-                                        <td>ssas</td>
-                                        <td><select name="" id="" class="form-control"></select></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-
-                        </div>
-                    </div>
-                    </div>
-
-                </div>
-            
-            </div>
-            <br>
-
-            <H3  style="margin: 10px 0px 20px 0px;">  <img src="../public/img/icono.png" height="25px" style="margin-top: -10px;" > <span > INFORMACIÓN CARGA LABORAL</span></H3>
+            <H3  style="margin: 10px 0px 20px 0px;">  <img src="{{url('public/img/icono.png')}}" height="25px" style="margin-top: -10px;" > <span > INFORMACIÓN CARGA LABORAL</span></H3>
             <div class="panel">
                 <div class="panel-body" style="margin-top: 20px;">
                          
-                    
+                    <div class="col-md-3 col-md-offset-9">
+        
+                            
                           
-                    <table class="table table-responsive table-bordered table-striped" id="tblAsignacion">
+                          </div>
+                          
+                    <table id="dt" class="table table-responsive table-bordered table-striped">
                         <thead class="bg-primary">
                             <tr>
-                                <th style="color: #fff !important;"> Nombres y Apellidos</th>
-                                <th style="color: #fff !important;"> Estudios Proceso </th>
-                                <th style="color: #fff !important;"> Estudios Pendientes</th>
-                                <th style="color: #fff !important;"> Total Estudios</th>
+                                <th style="color: #fff !important;"> ID</th>
+                                <th style="color: #fff !important;"> ID Entidad  </th>
+                                <th style="color: #fff !important;"> Nombre y Apellidos </th>
+                                <th style="color: #fff !important;"> N° de Estudios</th>
+                                <th style="color: #fff !important;"> Estado</th>
+                                <th style="color: #fff !important;"> Acción</th>
+
 
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>ssas</td>
-                                <td>ssas</td>
-                               <td>ssas</td>
-                                <td>ssas</td>
-                            </tr>
-                            <tr>
-                                <td>ssas</td>
-                                <td>ssas</td>
-                                <td>ssas</td>
-                                <td>ssas</td>
-                            </tr>
+                            
                         </tbody>
                     </table>
 
@@ -188,6 +105,29 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/js/bootstrap-datepicker.js "></script>
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
+     $('#dt').DataTable({
+        "paging":   false,
+        "language": {
+            "decimal": "",
+                "emptyTable": "No hay información",
+                "info": "Mostrando _START_ a _END_ de _TOTAL_ Entradas",
+                "infoEmpty": "Mostrando 0 to 0 of 0 Entradas",
+                "infoFiltered": "(Filtrado de _MAX_ total entradas)",
+                "infoPostFix": "",
+                "thousands": ",",
+                "lengthMenu": "Mostrar _MENU_ Entradas",
+                "loadingRecords": "Cargando...",
+                "processing": "Procesando...",
+                "search": "Buscar:",
+                "zeroRecords": "Sin resultados encontrados",
+                "paginate": {
+                    "first": "Primero",
+                    "last": "Ultimo",
+                    "next": "Siguiente",
+                    "previous": "Anterior"
+                }
+            }
+    });
     /*Función  para habilitar y desahabilitar select dependiendo del estado***/
     function cambiarEstado(selectEstado) {
         let estado = $(selectEstado).find('select[id="estado"]');
@@ -248,12 +188,16 @@
     }
 
 
-   
+    $(document).ready(function () {
         /**Funcion para el manejo de la tabla**/
         $('#tblAsignacion').DataTable({
-        "paging":   false,
-        "language": {
-            "decimal": "",
+            scrollX: true,
+            pageLength: 10,
+            responsive: true,
+            dom: '<"html5buttons "B>lTfgitp',
+            buttons: [],
+            language: {
+                "decimal": "",
                 "emptyTable": "No hay información",
                 "info": "Mostrando _START_ a _END_ de _TOTAL_ Entradas",
                 "infoEmpty": "Mostrando 0 to 0 of 0 Entradas",
@@ -271,7 +215,9 @@
                     "next": "Siguiente",
                     "previous": "Anterior"
                 }
-            }
+            },
+
+        });
     });
 
 </script>

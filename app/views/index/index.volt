@@ -1,11 +1,18 @@
 {{ content() }}
 
 <style>
+
+
+  body{
+    background-image:  url("{{url('/public/img/portada-loginR.png')}}") !important;
+    background-size: contain !important;
+
+  }
    .login{
-        background-color: rgba(96, 96, 90, 0.6);
+        background-color: rgba(29, 29, 28, 0.6);
         margin-top: 8%;
         padding: 2%;
-                border-radius: 10px;
+       border-radius: 10px;
     }
     .btn-primary:hover{
 		background-color: #467AB0!important;
@@ -31,7 +38,7 @@
     }
 </style>
 
-<body style="background-color:#fff ;background-size: cover;">
+<body>
     <div class="container">
         <div class="col-md-12 text-center">
             <br>                

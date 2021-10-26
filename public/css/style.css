@@ -4684,8 +4684,8 @@ body.body-small .footer.fixed {
 }
 .table-bordered > thead > tr > th,
 .table-bordered > thead > tr > td {
-  background-color: #32659A !important;
-  color: #f2f2f2 !important;
+   background-color: #32659A !important;
+        color: #f2f2f2 !important;
   border-bottom-width: 1px;
 }
 .table-bordered > thead > tr > th,
