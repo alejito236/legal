@@ -45,11 +45,7 @@
         padding-left:8px;    
     }
 
-    .nav{
-        padding-top:10px;
-        padding-bottom:20px;
-    }
-
+  
     .btn{
         padding-top:5px!important;
         padding-bottom:5px!important;
@@ -107,7 +103,7 @@
     <div class="row">  
     {# INFORMACIÓN ENTIDAD DE DESTINO #}
         <div class="col-lg-12 input-group">
-            <img src="{{url('public/img/Logo%20Novus%20Legal-11.png')}}" height="40px" width="30"/>
+            <img src="{{url('public/img/icono.png')}}"  width="30"/>
             <h4 class="h4" style="padding-left: 15px; margin-top: 0px;" >INFORMACIÓN ENTIDAD DE DESTINO</h4><br>
         </div>
         <div class="row background-white" id="infoEntidadDestino" name="infoEntidadDestino">
@@ -139,7 +135,7 @@
 
     {# INFORMACIÓN ESTADO DE TÍTULOS #}    
         <div class="col-lg-12 input-group">
-            <img src="{{url('public/img/Logo%20Novus%20Legal-11.png')}}" height="40px" width="30"/>
+            <img src="{{url('public/img/icono.png')}}"  width="30"/>
             <h4 class="h4" style="padding-left: 15px; margin-top: 0px;" >INFORMACIÓN ESTADO DE TÍTULOS</h4><br>
         </div>        
         <div class="row background-white" id="infoEstadoTitulos" name="infoEstadoTitulos">
@@ -181,7 +177,7 @@
 
     {# ESTUDIO MATRÍCULA #}
         <div class="col-lg-12 input-group">
-            <img src="{{url('public/img/Logo%20Novus%20Legal-11.png')}}" height="40px" width="30"/>              
+            <img src="{{url('public/img/icono.png')}}"  width="30"/>              
             <h4 class="h4" style="padding-left: 15px; margin-top: 0px;" >ESTUDIO MATRÍCULA #</h4><br>
         </div>
         <div class="row background-white" id="infoEstadoTitulos" name="infoEstadoTitulos">
@@ -281,9 +277,9 @@
                                     
                                 </div>
                             {% endif %}
-                            <div id="grupoTablas">
+                            <div id="grupoTablas" style="padding-bottom:20px;">
                                 {# INICIA FOR #}
-                                <div id="pestanas{{item.preguntasId}}"  class="pestanas">
+                                <div id="pestanas{{item.preguntasId}}"  class="pestanas" style="padding-bottom:10px;">
                                     <nav class="nav">
                                         <a id="pestana1" class="version" onclick='cambiarPestanna(pestanas{{item.preguntasId}},this);'>V1</a>
                                         <a id="pestana2" class="version" onclick='cambiarPestanna(pestanas{{item.preguntasId}},this);'>V2</a>
@@ -399,7 +395,7 @@
 
     {# INFORMACIÓN DEL CONCEPTO #}
         <div class="col-lg-12 input-group">
-            <img src="{{url('public/img/Logo%20Novus%20Legal-11.png')}}" height="40px" width="30"/>
+            <img src="{{url('public/img/icono.png')}}"  width="30"/>
             <h4 class="h4" style="padding-left: 15px; margin-top: 0px;" >INFORMACIÓN DEL CONCEPTO</h4><br>
         </div>
         <div class="row background-white" id="infoEstadoTitulos" name="infoEstadoTitulos">
@@ -469,7 +465,7 @@
 
     {# ESTUDIO TÍTULOS #}
         <div class="col-lg-12 input-group">
-            <img src="{{url('public/img/Logo%20Novus%20Legal-11.png')}}" height="40px" width="30"/>
+            <img src="{{url('public/img/icono.png')}}"  width="30"/>
             <h4 class="h4" style="padding-left: 15px; margin-top: 0px;" >ESTUDIO TÍTULOS</h4><br>
         </div>
         <div class="row background-white" id="infoEstadoTitulos" name="infoEstadoTitulos">

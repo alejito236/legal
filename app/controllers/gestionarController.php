@@ -15,6 +15,9 @@ class gestionarController extends ControllerBase
         $this->date = new \DateTime('America/Bogota');
         $this->dateAnterior = new \DateTime('America/Bogota' . '-1 day');
         $this->view->campanas_roles = $this->session->get("campanas_roles");
+        $this->view->bread= array("menu1"=>array("Gestión legal","Gestionlegal"),
+                            "menu2"=>array("Estudio de titulos","Estudiotitulos"),
+                            "menu3"=>array("Gestionar","Gestionar")); 
         
         //Retorna la clave del array, es un dato númerico si lo encuentra
         //backoffice es rol 1
