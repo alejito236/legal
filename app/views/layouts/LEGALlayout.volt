@@ -16,7 +16,7 @@
         background: #706F6E !important;
         height: 100%;
         margin: 8px;
-        border-radius: 20px;
+        border-radius: 20px!important;
         width: 240px;
 
 
@@ -28,6 +28,7 @@
         border: none;
         background-color: #fff !important;
         padding: 6px;
+        
 
 
 
@@ -327,7 +328,7 @@
 
 
         <nav class="navbar-default navbar-static-side" role="navigation" style="position: fixed;top: 110px;">
-            <ul class="nav" id="side-menu"  style="background: #706F6E !important;">
+            <ul class="nav" id="side-menu"  style="">
                 <li class="menu"><a href="{{url('distribucion')}}"> <span class="nav-label text-black">Gestión
                             legal </span></a>
                     <ul class="nav" id="side-menu"  style="background: #706F6E !important;">
