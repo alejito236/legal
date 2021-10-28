@@ -386,7 +386,7 @@
                         data-toggle="modal" 
                         data-target="#newPreguntaModal"
                     >
-                        <i class="fas fa-plus-circle" style="color:#32659A; font-size: 30px;"></i>
+                        <i class="fas fa-plus-circle" style="color:#32659A!important; font-size: 30px;"></i>
                     </button>
                 </div>
             </div>

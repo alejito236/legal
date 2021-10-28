@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 </head>
 <style>
-    * {
+    h3 {
      
         color: #1e1e1c !important;
     }
