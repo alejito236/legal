@@ -102,12 +102,12 @@
 
 
 </style>
-
+<br><br>
 <div class="container background-gray" >
     <div class="row">  
     {# INFORMACIÓN ENTIDAD DE DESTINO #}
         <div class="col-lg-12 input-group">
-            <img src="../legal/public/img/Logo%20Novus%20Legal-11.png" height="40px" width="30"/>           
+            <img src="{{url('public/img/Logo%20Novus%20Legal-11.png')}}" height="40px" width="30"/>
             <h4 class="h4" style="padding-left: 15px; margin-top: 0px;" >INFORMACIÓN ENTIDAD DE DESTINO</h4><br>
         </div>
         <div class="row background-white" id="infoEntidadDestino" name="infoEntidadDestino">
@@ -139,7 +139,7 @@
 
     {# INFORMACIÓN ESTADO DE TÍTULOS #}    
         <div class="col-lg-12 input-group">
-            <img src="../legal/public/img/Logo%20Novus%20Legal-11.png" height="40px" width="30"/>           
+            <img src="{{url('public/img/Logo%20Novus%20Legal-11.png')}}" height="40px" width="30"/>
             <h4 class="h4" style="padding-left: 15px; margin-top: 0px;" >INFORMACIÓN ESTADO DE TÍTULOS</h4><br>
         </div>        
         <div class="row background-white" id="infoEstadoTitulos" name="infoEstadoTitulos">
@@ -181,7 +181,7 @@
 
     {# ESTUDIO MATRÍCULA #}
         <div class="col-lg-12 input-group">
-            <img src="../legal/public/img/Logo%20Novus%20Legal-11.png" height="40px" width="30"/>           
+            <img src="{{url('public/img/Logo%20Novus%20Legal-11.png')}}" height="40px" width="30"/>              
             <h4 class="h4" style="padding-left: 15px; margin-top: 0px;" >ESTUDIO MATRÍCULA #</h4><br>
         </div>
         <div class="row background-white" id="infoEstadoTitulos" name="infoEstadoTitulos">
@@ -399,7 +399,7 @@
 
     {# INFORMACIÓN DEL CONCEPTO #}
         <div class="col-lg-12 input-group">
-            <img src="../legal/public/img/Logo%20Novus%20Legal-11.png" height="40px" width="30"/>           
+            <img src="{{url('public/img/Logo%20Novus%20Legal-11.png')}}" height="40px" width="30"/>
             <h4 class="h4" style="padding-left: 15px; margin-top: 0px;" >INFORMACIÓN DEL CONCEPTO</h4><br>
         </div>
         <div class="row background-white" id="infoEstadoTitulos" name="infoEstadoTitulos">
@@ -469,7 +469,7 @@
 
     {# ESTUDIO TÍTULOS #}
         <div class="col-lg-12 input-group">
-            <img src="../legal/public/img/Logo%20Novus%20Legal-11.png" height="40px" width="30"/>           
+            <img src="{{url('public/img/Logo%20Novus%20Legal-11.png')}}" height="40px" width="30"/>
             <h4 class="h4" style="padding-left: 15px; margin-top: 0px;" >ESTUDIO TÍTULOS</h4><br>
         </div>
         <div class="row background-white" id="infoEstadoTitulos" name="infoEstadoTitulos">
@@ -600,12 +600,12 @@
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>                    
-                    <img src="../legal/public/img/Novus logistica-32.png" height="30px" style="margin-top: 20px;">
+                    <img src="{{url('public/img/Novus logistica-32.png')}}" height="30px" style="margin-top: 20px;">
                 </div>
                 <div class="modal-body">
                     <div class="row">
                         <div class="col-lg-12 input-group">
-                            <img src="../legal/public/img/favicon-logi.png" height="30px" width="30"/>           
+                            <img src="{{url('public/img/favicon-logi.png')}}" height="30px" width="30"/>           
                             <h5 class="h4" style="padding-left: 15px; margin-top: 5px;" >SOLICITUD LOGÍSTICA</h5><br>
                         </div>
                         {#1#}   

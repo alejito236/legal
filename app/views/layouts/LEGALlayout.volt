@@ -344,7 +344,7 @@
                                     </a>
                                 </li>
                                 <li class="menu">
-                                    <a href="{{url('expedidor')}}">
+                                    <a href="{{url('gestionar/index')}}">
             
                                         <span class="nav-label text-black">Gestionar</span>
                                     </a>
