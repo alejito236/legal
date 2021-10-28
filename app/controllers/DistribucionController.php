@@ -16,8 +16,7 @@ class DistribucionController extends ControllerBase
         $this->view->campana = $this->session->get("campana");
         $this->view->setTemplateAfter('LEGALlayout');
         $this->date = new \DateTime('America/Bogota');
-
-       
+        $this->view->bread= array("menu1"=>array("Gestión legal","Gestionlegal"),"menu2"=>array("Estudio de titulos","Estudiotitulos"),"menu3"=>array("Distribución","distribucion")); 
     }
 
     /**

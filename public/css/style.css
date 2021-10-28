@@ -8767,7 +8767,7 @@ body.rtls.top-navigation .footer.fixed {
   border: none;
 }
 .skin-1 .nav > li.active {
-  background: #3a4459;
+  background: #706F6E;
 }
 .skin-1 .nav > li > a {
   color: #9ea6b9;
@@ -8776,10 +8776,10 @@ body.rtls.top-navigation .footer.fixed {
   background-color: inherit;
 }
 .skin-1 .nav > li.active > a {
-  color: #fff;
+  color: #000;
 }
 .skin-1 .navbar-minimalize {
-  background: #0e9aef;
+  background: #706F6E !important;
   border-color: #0e9aef;
 }
 body.skin-1 {
@@ -8986,7 +8986,7 @@ body.skin-2 #wrapper {
   color: #213a53;
 }
 .skin-2 .nav.nav-tabs > li.active > a {
-  color: #555;
+  color: rgb(22, 22, 22);
 }
 .skin-2 .nav.nav-tabs > li.active {
   background: transparent;

@@ -8,7 +8,7 @@
 </head>
 <style>
     * {
-     
+
         color: #1e1e1c !important;
     }
 
@@ -18,8 +18,8 @@
         margin: 8px;
         border-radius: 20px;
         width: 240px;
-       
-       
+
+
 
     }
 
@@ -28,13 +28,13 @@
         border: none;
         background-color: #fff !important;
         padding: 6px;
-       
+
 
 
     }
 
     .navbar-minimalize:hover {
-         background-color: rgb(214, 207, 207) !important;
+        background-color: rgb(214, 207, 207) !important;
     }
 
     .navbar-header {
@@ -42,8 +42,17 @@
 
     }
 
+    .active {
+        margin: 10px;
+        padding: 0;
+        font-size: 16px !important;
+        background: #706F6E !important;
+        border: none !important;
+
+    }
+
     .menu {
-        
+
         font-size: 16px !important;
     }
 
@@ -55,27 +64,64 @@
 
         margin: 10px;
         padding: 0;
+       
     }
 
-    .menu a:hover>.text-black {
+    .menu a:hover>.text-black,
+    .menu a:focus>.text-black,
+    .menu a:active>.text-black {
         color: #333 !important;
         margin-top: 0 !;
     }
 
+    .active a {
+
+        margin: 10px;
+        padding: 0;
+       
+    }
+
+    .active a>.text-black {
+        color: #fff !important;
+        margin-top: 0 !;
+    }
+
+    .active a:hover>.text-black,
+    .active a:active>.text-black {
+        color: #333 !important;
+        margin-top: 0 !;
+        border-radius: 30px;
+    }
+
+   
+   
     .menu a:hover,
-    .menu a:focus {
-        background-color: rgb(232, 229, 229) !important;
+    .menu a:focus,
+    .menu a:active {
+        background: rgb(248, 248, 248) !important ;
         border-radius: 30px;
 
         color: #333 !important;
     }
+
+   
+    li.active a:focus
+    {
+        background: rgb(248, 248, 248) !important ;
+      
+        border-radius: 30px;
+
+        color: #333 !important;
+    }
+
+   
 
     .bg-gray {
 
 
         background: #c1c1c1 !important;
 
-        margin: 20px;
+
     }
 
     .panel {
@@ -204,14 +250,20 @@
         margin-top: 10px;
     }
 
-    input[type=search]  {
-        background-image:  url("{{url('/public/img/buscar.png')}}") !important;
+    input[type=search] {
+        background-image: url("{{url('/public/img/buscar.png')}}") !important;
         background-size: 25px !important;
         background-position: 8px 5px !important;
         background-repeat: no-repeat !important;
         padding-left: 35px !important;
         border-radius: 60px !important;
         margin-bottom: 10px !important;
+
+    }
+
+    .breadcrumb {
+
+        position: fixed;
 
     }
 </style>
@@ -223,7 +275,6 @@
                 <div class="navbar-header">
                     <img src="{{url('public/img/Logo-nav.png')}}" height="70px" style="margin-top: 20px;">
 
-                    </a>
                 </div>
 
                 <ul class="nav navbar-nav ">
@@ -232,7 +283,30 @@
                                 style="font-size:30px;margin-top: 20px;"></i> </button>
                     </li>
 
+
                 </ul>
+                <div class="" style="background:#fff;position:fixed;bottom:20px;left:250px">
+
+                    {% if bread is defined%}
+
+                    <ol class="breadcrumb text-primary">
+                        <?php $i=0;
+                       ?>
+                        {% for breadcrumb in bread %}
+                        <?php $i=$i+1 ;
+                         
+                         if ($i == 1 || count($bread)=== $i) {?>
+                        <li class="text-primary">{{breadcrumb[0]}}</li>
+                        <?php }else{ ?>
+                        <li class="text-primary"><a href=" {{url(breadcrumb[1])}}"
+                                class="text-primary">{{breadcrumb[0]}}</a></li>
+                        <?php }?>
+                        {%endfor%}
+                    </ol>
+
+
+                    {% endif%}
+                </div>
                 <ul class="nav navbar-nav navbar-right">
 
                     <li class="dropdown" style="margin-top: 20px;">
@@ -247,65 +321,59 @@
                         </ul>
                     </li>
                 </ul>
+
             </div>
         </nav>
+
+
         <nav class="navbar-default navbar-static-side" role="navigation" style="position: fixed;top: 110px;">
-            <div class="sidebar-collapse">
-                <ul class="nav " id="side-menu">
-                    <li class="nav-header">
-                        <div class="dropdown profile-element text-center">
+            <ul class="nav" id="side-menu"  style="background: #706F6E !important;">
+                <li class="menu"><a href="{{url('distribucion')}}"> <span class="nav-label text-black">Gestión
+                            legal </span></a>
+                    <ul class="nav" id="side-menu"  style="background: #706F6E !important;">
+                        <li class="menu"><a href="{{url('distribucion')}}"> <span class="nav-label text-black">Estudio
+                                    TTl</span></a>
+                            <ul class="nav menu" style="background: #706F6E !important;">
 
-                            <div class="menu">
-                               
-                    <li class="menu">
-                        <a href="{{url('backoffice/index')}}">
+                                <li class="menu"><a href="{{url('distribucion')}}"> <span
+                                            class="nav-label text-black">Distribucion</span></a></li>
+                                <li class="menu ">
+                                    <a href="{{url('asignacion/index')}}">
 
-                            <span class="nav-label text-black">Gestion</span>
-                        </a>
-                    </li>
-                    <li class="menu">
-                        <a href="{{url('distribucion')}}">
+                                        <span class="nav-label text-black ">Asignacion</span>
+                                    </a>
+                                </li>
+                                <li class="menu">
+                                    <a href="{{url('expedidor')}}">
+            
+                                        <span class="nav-label text-black">Gestionar</span>
+                                    </a>
+                                </li>
+                                <li class="menu">
+                                    <a href="{{url('expedidor')}}">
+            
+                                        <span class="nav-label text-black">ver</span>
+                                    </a>
+                                </li>
+                                <li class="menu">
+                                    <a href="{{url('expedidor')}}">
+            
+                                        <span class="nav-label text-black">Auditar</span>
+                                    </a>
+                                </li>
+                                <li class="menu">
+                                    <a href="{{url('expedidor')}}">
+            
+                                        <span class="nav-label text-black">Requerimiento</span>
+                                    </a>
+                                </li>
+                            </ul>
 
-                            <span class="nav-label text-black">Distribucion</span>
-                        </a>
-                    </li>
-                  
-                    <!--Si el rol es 2 Asignacion se muestra opcion del index de Asignacion-->
-                   
-                    <li class="menu">
-                        <a href="{{url('asignacion/index')}}">
+                        </li>
+                    </ul>
+                </li>
+            </ul>
 
-                            <span class="nav-label text-black">Asignacion</span>
-                        </a>
-                    </li>
-                   
-                    <!--Si el rol es 3 Expedidor se muestra opcion del index de Expedidor-->
-                  
-                    <li class="menu">
-                        <a href="{{url('expedidor/generar')}}">
-
-                            <span class="nav-label text-black">Expedidor</span>
-                        </a>
-                    </li>
-                  
-                    <li class="menu">
-                        <a href="{{url('administrador/usuarios')}}">
-
-                            <span class="nav-label text-black">Usuarios</span>
-                        </a>
-                    </li>
-                    <li class="menu">
-                        <a href="{{url('administrador/liberarRegistroBack')}}">
-
-                            <span class="nav-label text-black">Liberar Registros</span>
-                        </a>
-                    </li>
-                 
-            </div>
-    </div>
-
-    </li>
-    </ul>
     </div>
     </nav>
 
@@ -318,6 +386,7 @@
 
         </div>
     </div>
+   
 
 
 
@@ -409,7 +478,8 @@
             new Chart(ctx4, { type: 'doughnut', data: doughnutData, options: doughnutOptions });
 
         });
-        
+      
+ 
     </script>
 </body>
 
