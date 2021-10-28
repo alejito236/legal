@@ -18,7 +18,10 @@ class AsignacionController extends ControllerBase
         $this->date = new \DateTime('America/Bogota');
         $this->dateAnterior = new \DateTime('America/Bogota'.'-1 day');
         $this->view->campanas_roles = $this->session->get("campanas_roles");
-
+        $this->view->bread= array("menu1"=>array("Gestión legal","Gestionlegal"),
+                            "menu2"=>array("Estudio de titulos","Estudiotitulos"),
+                            "menu3"=>array("Asignación","asignacion")); 
+        print_r( count($this->view->bread));
         //Retorna la clave del array, es un dato númerico si lo encuentra
         //Asignacion es rol 2
         $validaRol = array_search(2, array_column($this->view->campanas_roles, 'rol'));
@@ -91,12 +94,14 @@ class AsignacionController extends ControllerBase
             $getCriteriosAsignacion = $getCriteriosAsignacion->fetchAll();
             $getCriteriosAsignacion = json_encode($getCriteriosAsignacion);
             $this->view->getCriteriosAsignacion = json_decode($getCriteriosAsignacion);
+          
             
             $gestionAsignacion = new GestionAsignacion();
             $getListadoAsignacion = $gestionAsignacion->getListadoAsignacion($fechaFinal);                        
             $getListadoAsignacion = $getListadoAsignacion->fetchAll();
             $getListadoAsignacion = json_encode($getListadoAsignacion);
-            $getListadoAsignacion = json_decode($getListadoAsignacion);            
+            $getListadoAsignacion = json_decode($getListadoAsignacion); 
+           
             
             if(empty($getListadoAsignacion)){
                 $this->view->vacio = "No hay datos para esta fecha";
