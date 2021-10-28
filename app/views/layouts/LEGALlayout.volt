@@ -7,9 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 </head>
 <style>
-    *{
-        color: #1e1e1c !important;
-    }
+    
     .navbar-static-side {
         background: #706F6E !important;
         height: 100%;
@@ -185,7 +183,7 @@
         <nav class="navbar navbar-default navbar-static-top">
             <div class="container-fluid" style="padding: 10px">
                 <div class="navbar-header">
-                  <img src="../public/img/Logo-nav.png" height="70px" style="margin-top: 20px;">
+                  <img src="../legal/public/img/Logo-nav.png" height="70px" style="margin-top: 20px;">
 
                     </a>
                 </div>

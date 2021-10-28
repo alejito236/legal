@@ -54,6 +54,7 @@ class SecurityPlugin extends Plugin
 				'Backoffice'			=> ['index' ,'anular','gestion', 'guardarGestion','limpiarEnGestion','borrarArrayCiudades','anulados'],
 				'Asignacion'			=> ['index','guardarGestion','limpiarFecha'],
 				'expedidor'				=> ['index' ,'generar','reagendar','limpiarFecha','ejecutaProcedimientos'],
+				'gestionar'				=> ['index']
 			];
 			
 			foreach ($privateResources as $resource => $actions) {
