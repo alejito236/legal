@@ -4677,13 +4677,15 @@ body.body-small .footer.fixed {
 .table > thead:first-child > tr:first-child > td,
 .table > thead:first-child > tr:first-child > th {
   border-top: 0;
+  
 }
 .table-bordered {
   border: 1px solid #EBEBEB;
 }
 .table-bordered > thead > tr > th,
 .table-bordered > thead > tr > td {
-  background-color: #F5F5F6;
+   background-color: #32659A !important;
+        color: #f2f2f2 !important;
   border-bottom-width: 1px;
 }
 .table-bordered > thead > tr > th,

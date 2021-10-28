@@ -27,7 +27,7 @@ class Services extends \Base\Services
         /**
          * Handle exceptions and not-found exceptions using NotFoundPlugin
          */
-        $eventsManager->attach('dispatch:beforeException', new NotFoundPlugin);
+     //   $eventsManager->attach('dispatch:beforeException', new NotFoundPlugin);
 
         $dispatcher = new Dispatcher;
         $dispatcher->setEventsManager($eventsManager);

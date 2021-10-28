@@ -1,8 +1,13 @@
 {{ content() }}
 
 <style>
+   body{
+    background-image:  url("{{url('/public/img/portada-loginR.png')}}") !important;
+    background-size: contain !important;
+
+  }
    .login{
-        background-color:  rgba(112, 111,110, 0.6);
+        background-color: rgba(29, 29, 28, 0.6);
         margin-top: 8%;
         padding: 2%;
                 border-radius: 10px;
@@ -28,6 +33,9 @@
         margin-top:25px;
         margin-bottom:25px !important;
 
+    }
+    .table{
+        border: 1px solid ;
     }
 </style>
 

@@ -7,18 +7,34 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 </head>
 <style>
-    
+    * {
+     
+        color: #1e1e1c !important;
+    }
+
     .navbar-static-side {
         background: #706F6E !important;
         height: 100%;
         margin: 8px;
         border-radius: 20px;
-        width :240px;
+        width: 240px;
+       
+       
 
     }
 
     .navbar-minimalize {
         margin-left: 18%;
+        border: none;
+        background-color: #fff !important;
+        padding: 6px;
+       
+
+
+    }
+
+    .navbar-minimalize:hover {
+         background-color: rgb(214, 207, 207) !important;
     }
 
     .navbar-header {
@@ -27,7 +43,7 @@
     }
 
     .menu {
-
+        
         font-size: 16px !important;
     }
 
@@ -56,18 +72,19 @@
 
     .bg-gray {
 
-    
+
         background: #c1c1c1 !important;
 
         margin: 20px;
     }
 
     .panel {
-     
+        display: flex;
+        flex-direction: column;
         border-radius: 20px !important;
         margin: 10px !important;
-        padding: 5px!important;
-       
+        padding: 5px !important;
+
 
     }
 
@@ -155,52 +172,73 @@
     }
 
     .btn-group {
-       display: flex;
-       margin-left: 18px;
+        display: flex;
+        margin-left: 18px;
     }
 
     .btn-group .btn {
         width: 100%;
         margin: 15px;
-        font-size: 16px!important ;
+        font-size: 16px !important;
     }
 
-    .bg-primary{
+    .bg-primary {
         background-color: #32659A !important;
         color: #f2f2f2 !important;
     }
 
-   
+    .a {
+        background-color: #fff !important;
+        padding: 20px !important;
+        border: none;
+    }
 
-    .row{
-        margin-bottom:10px;
-        margin-top:10px;
+    .a:hover {
+        background-color: #fff !important;
+
+
+    }
+
+    .row {
+        margin-bottom: 10px;
+        margin-top: 10px;
+    }
+
+    input[type=search]  {
+        background-image:  url("{{url('/public/img/buscar.png')}}") !important;
+        background-size: 25px !important;
+        background-position: 8px 5px !important;
+        background-repeat: no-repeat !important;
+        padding-left: 35px !important;
+        border-radius: 60px !important;
+        margin-bottom: 10px !important;
+
     }
 </style>
 
 <body style="">
     <div id="content">
-        <nav class="navbar navbar-default navbar-static-top">
+        <nav class="navbar navbar-default navbar-fixed-top">
             <div class="container-fluid" style="padding: 10px">
                 <div class="navbar-header">
-                  <img src="../legal/public/img/Logo-nav.png" height="70px" style="margin-top: 20px;">
+                    <img src="{{url('public/img/Logo-nav.png')}}" height="70px" style="margin-top: 20px;">
 
                     </a>
                 </div>
 
                 <ul class="nav navbar-nav ">
                     <li>
-                        <a class="navbar-minimalize " href="#" class="btn btn-default" ><i class="fa fa-home text-primary  "
-                                style="font-size:30px;"></i> </a>
+                        <button class="navbar-minimalize " style=""><i class="fa fa-home text-primary  "
+                                style="font-size:30px;margin-top: 20px;"></i> </button>
                     </li>
 
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
 
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                    <li class="dropdown" style="margin-top: 20px;">
+                        <button class="a dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                             aria-expanded="false"><span class="fa fa-user  text-primary"></span> {{usuario}} <span
-                                class="caret"></span></a>
+                                class="caret"></span></button>
                         <ul class="dropdown-menu">
                             <li> <a href="{{url('session/end')}}">
                                     <i class="fas fa-sign-out-alt"></i> Salir
@@ -211,19 +249,14 @@
                 </ul>
             </div>
         </nav>
-        <nav class="navbar-default navbar-static-side" role="navigation">
+        <nav class="navbar-default navbar-static-side" role="navigation" style="position: fixed;top: 110px;">
             <div class="sidebar-collapse">
                 <ul class="nav " id="side-menu">
                     <li class="nav-header">
                         <div class="dropdown profile-element text-center">
 
                             <div class="menu">
-                                {% if campanas_roles is defined %}
-                                {% for item in campanas_roles %}
-                                <!--Si la campanña es 4 (Logistica)-->
-                                {% if item['campana'] is 4 %}
-                                <!--Si el rol es 1 Backoffice se muestra opcion del index de backoffice-->
-                                {% if item['rol'] is 1 %}
+                               
                     <li class="menu">
                         <a href="{{url('backoffice/index')}}">
 
@@ -231,32 +264,30 @@
                         </a>
                     </li>
                     <li class="menu">
-                        <a href="{{url('backoffice/anulados')}}">
+                        <a href="{{url('distribucion')}}">
 
-                            <span class="nav-label text-black">Anulados</span>
+                            <span class="nav-label text-black">Distribucion</span>
                         </a>
                     </li>
-                    {% endif %}
+                  
                     <!--Si el rol es 2 Asignacion se muestra opcion del index de Asignacion-->
-                    {% if item['rol'] is 2 %}
+                   
                     <li class="menu">
                         <a href="{{url('asignacion/index')}}">
 
                             <span class="nav-label text-black">Asignacion</span>
                         </a>
                     </li>
-                    {% endif %}
+                   
                     <!--Si el rol es 3 Expedidor se muestra opcion del index de Expedidor-->
-                    {% if item['rol'] is 3 %}
+                  
                     <li class="menu">
                         <a href="{{url('expedidor/generar')}}">
 
                             <span class="nav-label text-black">Expedidor</span>
                         </a>
                     </li>
-                    {% endif %}
-                    <!--Si el rol es 5 administrador se muestra opcion de usuarios-->
-                    {% if item['rol'] is 5 %}
+                  
                     <li class="menu">
                         <a href="{{url('administrador/usuarios')}}">
 
@@ -269,12 +300,7 @@
                             <span class="nav-label text-black">Liberar Registros</span>
                         </a>
                     </li>
-                    {% endif %}
-
-                    {% endif %}
-
-                    {% endfor %}
-                    {% endif %}
+                 
             </div>
     </div>
 
@@ -284,7 +310,7 @@
     </nav>
 
     <div id="page-wrapper" class=" ">
-        <div class="container" style="margin: 20px;width: 100%;">
+        <div class="container" style="margin-top: 100px;margin-left: 20px;width: 100%;">
 
             {{content()}}
 
@@ -383,6 +409,7 @@
             new Chart(ctx4, { type: 'doughnut', data: doughnutData, options: doughnutOptions });
 
         });
+        
     </script>
 </body>
 
