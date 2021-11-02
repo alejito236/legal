@@ -66,7 +66,46 @@
                             </tr>
                         </thead>
                         <tbody>
-                            
+                            <tr>
+                                <td>saas</td>
+                                <td>w</td>
+                                <td>w</td>
+                                <td>w</td>
+                                <td>w</td>
+                                <td>w</td>
+                            </tr>
+                            <tr>
+                                <td>saas</td>
+                                <td>w</td>
+                                <td>w</td>
+                                <td>w</td>
+                                <td>w</td>
+                                <td>w</td>
+                            </tr>
+                            <tr>
+                                <td>saas</td>
+                                <td>w</td>
+                                <td>w</td>
+                                <td>w</td>
+                                <td>w</td>
+                                <td>w</td>
+                            </tr>
+                            <tr>
+                                <td>saas</td>
+                                <td>w</td>
+                                <td>w</td>
+                                <td>w</td>
+                                <td>w</td>
+                                <td>w</td>
+                            </tr>
+                            <tr>
+                                <td>saas</td>
+                                <td>w</td>
+                                <td>w</td>
+                                <td>w</td>
+                                <td>w</td>
+                                <td>w</td>
+                            </tr>
                         </tbody>
                     </table>
 
@@ -106,9 +145,10 @@
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
      $('#dt').DataTable({
-        "paging":   false,
+        "paging":   true,
         "language": {
             "decimal": "",
+             
                 "emptyTable": "No hay información",
                 "info": "Mostrando _START_ a _END_ de _TOTAL_ Entradas",
                 "infoEmpty": "Mostrando 0 to 0 of 0 Entradas",

@@ -2,7 +2,7 @@
 use Phalcon\Flash;
 use Phalcon\Session;
 
-class gestionarController extends ControllerBase
+class GestionarController extends ControllerBase
 {
     public function initialize()
     {
@@ -24,14 +24,14 @@ class gestionarController extends ControllerBase
         $validaRol = array_search(1, array_column($this->view->campanas_roles, 'rol'));
         // Si valida que rol no es númerico, (el usuario no tiene un rol valido)
         // retorna a vista de error
-        if (!is_numeric($validaRol)) {
-            return $this->dispatcher->forward(
-                [
-                    "controller" => "erros",
-                    "action"     => "show401",
-                ]
-            );
-        }
+        // if (!is_numeric($validaRol)) {
+        //     return $this->dispatcher->forward(
+        //         [
+        //             "controller" => "erros",
+        //             "action"     => "show401",
+        //         ]
+        //     );
+        // }
         $post = $this->request->getPost(); 
         
         if(isset($post['arrayCiudad'])  && isset($post['tipoProducto'])){            

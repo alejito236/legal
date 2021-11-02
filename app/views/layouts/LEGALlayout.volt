@@ -44,7 +44,7 @@
     }
 
     .active {
-        margin: 10px;
+        margin: 20px 10px;
         padding: 0;
         font-size: 16px !important;
         background: #706F6E !important;
@@ -53,32 +53,40 @@
     }
 
     .menu {
-
+        margin: 20px 10px;
         font-size: 16px !important;
+        
     }
 
     .text-black {
         color: #ffffff !important;
     }
 
-    .menu a {
-
-        margin: 10px;
-        padding: 0;
+    .menu:nth-child(n) a {
+        background-image: url("{{url('/public/img/dibujoleft.png')}}")!important;
+        background-size: 15px !important;
+        background-position: 180px center !important;
+        background-repeat: no-repeat !important;
+        
+        
        
     }
 
-    .menu a:hover>.text-black,
-    .menu a:focus>.text-black,
-    .menu a:active>.text-black {
+    .menu:nth-child(n)>a:hover>.text-black,
+    .menu:nth-child(n)>a:focus>.text-black,
+    .menu:nth-child(n)>a:active>.text-black {
         color: #333 !important;
         margin-top: 0 !;
     }
 
-    .active a {
+    li.active:nth-child(n)>a {
 
-        margin: 10px;
-        padding: 0;
+       
+        
+        background-image: url("{{url('/public/img/dibujo.png')}}")!important;
+        background-size: 18px !important;
+        background-position: 180px center !important;
+        background-repeat: no-repeat !important;
        
     }
 
@@ -96,19 +104,33 @@
 
    
    
-    .menu a:hover,
-    .menu a:focus,
-    .menu a:active {
+    
+    .menu>a:hover,
+    .menu>a:focus {
         background: rgb(248, 248, 248) !important ;
+        background-image: url("{{url('/public/img/azulgirado.png')}}")!important;
+     
+        background-size: 15px !important;
+        background-position: 180px center !important;
+        background-repeat: no-repeat !important;
+
+
         border-radius: 30px;
+
 
         color: #333 !important;
     }
 
-   
-    li.active a:focus
+    li.active>a:hover,
+    li.active>a:focus
     {
         background: rgb(248, 248, 248) !important ;
+       
+        background-image: url("{{url('/public/img/azul.png')}}")!important;
+        background-size: 15px !important;
+        background-position: 180px center !important;
+        background-repeat: no-repeat !important;
+
       
         border-radius: 30px;
 
@@ -234,10 +256,9 @@
         color: #f2f2f2 !important;
     }
 
-    .a {
-        background-color: #fff !important;
-        padding: 20px !important;
-        border: none;
+    .act {
+        text-decoration:underline;
+      
     }
 
     .a:hover {
@@ -311,8 +332,8 @@
                 <ul class="nav navbar-nav navbar-right">
 
                     <li class="dropdown" style="margin-top: 20px;">
-                        <button class="a dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                            aria-expanded="false"><span class="fa fa-user  text-primary"></span> {{usuario}} <span
+                        <button class=" dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                            aria-expanded="false" style="border:none;background:none;"><span class="fa fa-user  text-primary"></span> {{usuario}} <span
                                 class="caret"></span></button>
                         <ul class="dropdown-menu">
                             <li> <a href="{{url('session/end')}}">
@@ -334,7 +355,7 @@
                     <ul class="nav" id="side-menu"  style="background: #706F6E !important;">
                         <li class="menu"><a href="{{url('distribucion')}}"> <span class="nav-label text-black">Estudio
                                     TTl</span></a>
-                            <ul class="nav menu" style="background: #706F6E !important;">
+                            <ul class="nav" style="background: #706F6E !important;">
 
                                 <li class="menu"><a href="{{url('distribucion')}}"> <span
                                             class="nav-label text-black">Distribucion</span></a></li>
@@ -347,7 +368,7 @@
                                 <li class="menu">
                                     <a href="{{url('gestionar/index')}}">
             
-                                        <span class="nav-label text-black">Gestionar</span>
+                                        <span class="nav-label text-black ">Gestionar</span>
                                     </a>
                                 </li>
                                 <li class="menu">
