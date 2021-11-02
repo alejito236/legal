@@ -1,4 +1,5 @@
 <style>
+ 
     .background-gray{
         background-color: #C1C1C1;
         border-radius:15px;
@@ -51,8 +52,8 @@
         padding-bottom:5px!important;
         padding-right:15px!important;
         padding-left:15px!important;
-        margin-right:10px!important;
-        margin-left:12px!important;
+        margin-right:4.5px!important;
+        margin-left:4.5px!important;
     }
 
     .cliente{
@@ -98,9 +99,12 @@
 
 
 </style>
-<br><br>
-<div class="container background-gray" >
+
+<div class="container " >
     <div class="row">  
+        <div class="panel bg-gray" style="width:86%">
+            <div class="panel-body">
+                <div class="row">
     {# INFORMACIÓN ENTIDAD DE DESTINO #}
         <div class="col-lg-12 input-group">
             <img src="{{url('public/img/icono.png')}}"  width="30"/>
@@ -580,12 +584,14 @@
         <footer>
             <div class="row">            
                 <div class="col-md-6">
-                    <img src="../legal/public/img/Logo-grupo-blnc-horizontal.png" height="30px" style="margin-top: 20px;">        
-                    <br>
+                    <img src="{{url('/public/img/Logo-grupo-blnc-horizontal.png')}}" height="30px" style="margin-top: 20px;">        
+                    <br>)
                     <label class="text-white" style="padding-left:20px; padding-bottom:20px; padding-top:5px">Copyright 2021 Grupo Novus</label>
                 </div>
             </div>
         </footer>
+        </div>
+        </div>
     {# FIN #}
 
     {# MODAL LOGISTICA #}
@@ -613,7 +619,7 @@
                                 type="date"
                                 id="fechaModal"
                                 name="fechaModal"
-                                class="form-control"
+                                class="form-control form-control-logistica"
                                 required
                             >
                         </div>
@@ -625,7 +631,7 @@
                                 type="date"
                                 id="prioridadModal"
                                 name="prioridadModal"
-                                class="form-control"
+                                class="form-control form-control-logistica"
                                 required
                             >
                         </div><br><br><br><br>
@@ -638,7 +644,7 @@
                             <select                                
                                 id="tipoDocumentoModal"
                                 name="tipoDocumentoModal"
-                                class="form-control"
+                                class="form-control form-control-logistica"
                                 required
                             >
                                 <option value="">Seleccione...</option>
@@ -654,7 +660,7 @@
                                 type="number"
                                 id="numDocumentoModal"
                                 name="numDocumentoModal"
-                                class="form-control"
+                                class="form-control form-control-logistica"
                                 required
                             >
                         </div><br><br><br>
@@ -667,7 +673,7 @@
                                 type="text"
                                 id="ubicacionModal"
                                 name="ubicacionModal"
-                                class="form-control"
+                                class="form-control form-control-logistica"
                                 required
                             >
                         </div>
@@ -678,7 +684,7 @@
                             <textarea                                
                                 id="indicacionesModal"
                                 name="indicacionesModal"
-                                class="form-control"
+                                class="form-control form-control-logistica"
                                 style="height:35px;"
                                 required
                             ></textarea>
@@ -692,7 +698,7 @@
                                 type="text"
                                 id="direccionModal"
                                 name="direccionModal"
-                                class="form-control"
+                                class="form-control form-control-logistica"
                                 required
                             >
                         </div>
@@ -704,7 +710,7 @@
                                 type="text"
                                 id="barrioTextModal"
                                 name="barrioTextModal"
-                                class="form-control"
+                                class="form-control form-control-logistica"
                             >
                         </div><br><br><br>
                         {# 5 #}
@@ -715,7 +721,7 @@
                             <select                                 
                                 id="ciudadModal"
                                 name="ciudadModal"
-                                class="form-control"
+                                class="form-control form-control-logistica"
                                 required
                             >
                                 <option value="">Seleccione...</option>
@@ -730,7 +736,7 @@
                             <select                                 
                                 id="barrioModal"
                                 name="barrioModal"
-                                class="form-control"
+                                class="form-control form-control-logistica"
                                 required
                             >
                                 <option value="">--</option>
@@ -746,7 +752,7 @@
                             <select                                 
                                 id="Nomenclatura1Modal"
                                 name="Nomenclatura1Modal"
-                                class="form-control"
+                                class="form-control form-control-logistica"
                                 style="padding:4px;"
                                 required
                             >
@@ -762,7 +768,7 @@
                                 type="number"
                                 id="Nomenclatura2Modal"
                                 name="Nomenclatura2Modal"
-                                class="form-control"
+                                class="form-control form-control-logistica"
                                 required
                             >
                         </div>                        
@@ -771,7 +777,7 @@
                             <select                                 
                                 id="Nomenclatura3Modal"
                                 name="Nomenclatura3Modal"
-                                class="form-control"
+                                class="form-control form-control-logistica"
                                 style="padding:4px;"
                             >
                                 <option value="">--</option>
@@ -786,6 +792,8 @@
                                 name="Nomenclatura4Modal"
                                 type="checkbox"
                                 value="Bis"
+                                class="form-control-logistica
+                                 "
                             >                            
                         </div>
                         <div class="col-md-2" style="width:90px">
@@ -797,6 +805,8 @@
                                     id="Nomenclatura5Modal"
                                     name="Nomenclatura5Modal"
                                     value="Sur"
+                                    class="form-control-logistica
+                                     "
                                 >
                             </div>
                                 <div class="input-group">
@@ -806,6 +816,8 @@
                                     id="Nomenclatura6Modal"
                                     name="Nomenclatura6Modal"
                                     value="Este"
+                                    class="form-control-logistica
+                                     "
                                 >
                             </div>
                         </div>                  
@@ -815,7 +827,7 @@
                                 type="number"
                                 id="Nomenclatura7Modal"
                                 name="Nomenclatura7Modal"
-                                class="form-control"
+                                class="form-control form-control-logistica"
                                 required
                             >
                         </div>
@@ -825,7 +837,7 @@
                                 type="text"
                                 id="Nomenclatura8Modal"
                                 name="Nomenclatura8Modal"
-                                class="form-control"
+                                class="form-control form-control-logistica"
                                 style="padding:4px;"
                             >
                                 <option value="">--</option>
@@ -839,7 +851,7 @@
                                 type="number"
                                 id="Nomenclatura9Modal"
                                 name="Nomenclatura9Modal"
-                                class="form-control"
+                                class="form-control form-control-logistica"
                             >
                         </div>
                         <div class="col-md-2" style="width:90px">
@@ -1044,6 +1056,7 @@
                     </div>
                 </div>
             </div>
+        </div>
         </div>
     {# FIN #}
     

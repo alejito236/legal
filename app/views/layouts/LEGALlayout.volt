@@ -7,7 +7,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 </head>
 <style>
-    h3 {
+    .text-white{
+        color: #ffffff !important;
+    }
+    
+    h3,h4,label {
      
         color: #1e1e1c !important;
     }

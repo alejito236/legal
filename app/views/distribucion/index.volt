@@ -66,46 +66,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>saas</td>
-                                <td>w</td>
-                                <td>w</td>
-                                <td>w</td>
-                                <td>w</td>
-                                <td>w</td>
-                            </tr>
-                            <tr>
-                                <td>saas</td>
-                                <td>w</td>
-                                <td>w</td>
-                                <td>w</td>
-                                <td>w</td>
-                                <td>w</td>
-                            </tr>
-                            <tr>
-                                <td>saas</td>
-                                <td>w</td>
-                                <td>w</td>
-                                <td>w</td>
-                                <td>w</td>
-                                <td>w</td>
-                            </tr>
-                            <tr>
-                                <td>saas</td>
-                                <td>w</td>
-                                <td>w</td>
-                                <td>w</td>
-                                <td>w</td>
-                                <td>w</td>
-                            </tr>
-                            <tr>
-                                <td>saas</td>
-                                <td>w</td>
-                                <td>w</td>
-                                <td>w</td>
-                                <td>w</td>
-                                <td>w</td>
-                            </tr>
+                          
                         </tbody>
                     </table>
 
@@ -145,7 +106,8 @@
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
      $('#dt').DataTable({
-        "paging":   true,
+        "bLengthChange": false,
+        "iDisplayLength": 10,
         "language": {
             "decimal": "",
              
