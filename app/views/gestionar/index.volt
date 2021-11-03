@@ -597,17 +597,16 @@
     {# MODAL LOGISTICA #}
     <div class="modal fade" style="" id="logisticaModal" name="logisticaModal" tabindex="-1" role="dialog" aria-labelledby="logisticaModal" aria-hidden="true">
         <div class="modal-dialog modal-lg " role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>                    
-                    <img src="{{url('public/img/Novus logistica-32.png')}}" height="30px" style="margin-top: 20px;">
+            <div class="modal-content" style="border-radius: 20px!important;margin: 0!important;padding: 0!important;">
+                <div class="modal-header" style="margin: 0;margin: 0;background:url('/legal/public/img/barraverde.png');background-repeat: no-repeat;background-position: right 50%;background-size: 90%;">
+                                 
+                <div style="background:#ffffff;width: 200px;"><img src="{{url('public/img/Novus logistica-32.png')}}" height="40px" style="margin-top: 10px;"></div> 
+                   
                 </div>
                 <div class="modal-body">
                     <div class="row">
                         <div class="col-lg-12 input-group">
-                            <img src="{{url('public/img/favicon-logi.png')}}" height="30px" width="30"/>           
+                            <img src="{{url('public/img/logistica-icon.png')}}" height="30px" width="30"/>           
                             <h5 class="h4" style="padding-left: 15px; margin-top: 5px;" >SOLICITUD LOGÍSTICA</h5><br>
                         </div>
                         {#1#}   
@@ -791,6 +790,7 @@
                                 id="Nomenclatura4Modal"
                                 name="Nomenclatura4Modal"
                                 type="checkbox"
+                                
                                 value="Bis"
                                 class="form-control-logistica
                                  "
@@ -804,6 +804,7 @@
                                     type="checkbox"
                                     id="Nomenclatura5Modal"
                                     name="Nomenclatura5Modal"
+                                    
                                     value="Sur"
                                     class="form-control-logistica
                                      "
@@ -815,6 +816,7 @@
                                     type="checkbox"
                                     id="Nomenclatura6Modal"
                                     name="Nomenclatura6Modal"
+                                    
                                     value="Este"
                                     class="form-control-logistica
                                      "
@@ -1064,12 +1066,11 @@
     <div>
     
 </div>
-
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/js/bootstrap-datepicker.js"></script>
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script> 
 <script>
 $(document).ready(function(){
     let dirGenerada = [];
